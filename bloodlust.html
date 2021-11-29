@@ -1,0 +1,2491 @@
+<script type="text/worker">
+</script>
+
+<input type="checkbox" class="sheet-hidden sheet-nightMode" name="attr_nightMode" value="1" />
+
+<div class="sheet-wrapper">
+    <!-- Header -->
+    <div class="sheet-header sheet-row">
+        <div class="sheet-col-2">
+            <img src="https://s3.amazonaws.com/files.d20.io/images/209657133/6XpIHVJsdG4XVZLE3z9_kw/med.png?1616259613235" alt="BLOODLUST" />
+        </div>
+        <div class="sheet-col-9">
+            <div class="sheet-row">
+                <div class="sheet-col-2">Joueur&nbsp;:</div>
+                <div class="sheet-col-3">
+                    <input type="text" name="attr_Joueur_Nom" class="sheet-noBorder">
+                </div>
+                <div class="sheet-col-2">Campagne&nbsp;:</div>
+                <div class="sheet-col-3">
+                    <input type="text" name="attr_Personnage_Campagne" class="sheet-noBorder">
+                </div>
+            </div>
+            <div class="sheet-row">
+                <div class="sheet-col-2">Personnage&nbsp;:</div>
+                <div class="sheet-col-3">
+                    <input type="text" name="attr_Personnage_Nom" class="sheet-noBorder">
+                </div>
+                <div class="sheet-col-2">Arme&nbsp;:</div>
+                <div class="sheet-col-3">
+                    <input type="text" name="attr_Arme_Nom" class="sheet-noBorder">
+                </div>
+            </div>
+        </div>
+        <div class="sheet-col-1">
+            <input type="checkbox" class="sheet-display-pnj" name="attr_tab_pnj" value="1" title="Personnage Non Joueur" /><span class="sheet-display-pnj"></span>
+            <input type="checkbox" class="sheet-display-reglages" name="attr_tab_reglages" value="1" title="Réglages" /><span class="sheet-cog sheet-display-reglages">y</span><br />
+            <input type="checkbox" class="sheet-modal sheet-compendium" name="attr_modal_compendium" value="1" title="Compendium"><span class="sheet-cog sheet-compendium">x</span>
+            <div class="sheet-modal-wrapper">
+                <div class="sheet-modal">
+                    <div class="sheet-modal_header">
+                        <h2>Compendium <span class="sheet-close">*</span><input type="checkbox" class="sheet-modal" name="attr_modal_compendium" value="1"></h2>
+                    </div>
+                    <div class="sheet-modal_body">
+                        <p>Peut recevoir un objet, un coup spécial, une compétence, un sort (...) du <a href="https://bit.ly/ddn20" target="_blank">compendium</a></p>
+                        <textarea name="attr_compendium"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Repeat and hide checkbox from header to do css trick -->
+    <input type="checkbox" class="sheet-display-pnj sheet-hidden" name="attr_tab_pnj" value="1" />
+    <input type="checkbox" class="sheet-display-reglages sheet-hidden" name="attr_tab_reglages" value="1" />
+
+    <br clear="all" />
+
+    <!--- SHEET PJ -->
+    <div class="sheet-body sheet-pj">
+        <input type="hidden" name="attr_tab_nav" value="competences" />
+        <input type="radio" name="attr_tab_nav" class="sheet-tab sheet-tab_competences" value="competences" title="Porteur" /><span class="sheet-tab">Porteur</span>
+        <input type="radio" name="attr_tab_nav" class="sheet-tab sheet-tab_equipement" value="equipement" title="Equipement" /><span class="sheet-tab">Confrontation</span>
+        <input type="radio" name="attr_tab_nav" class="sheet-tab sheet-tab_inventaire" value="inventaire" title="Inventaire" /><span class="sheet-tab">Inventaire</span>
+        <input type="radio" name="attr_tab_nav" class="sheet-tab sheet-tab_compagnons" value="compagnons" title="Arme Dieu" /><span class="sheet-tab">Arme Dieu</span>
+        <input type="radio" name="attr_tab_nav" class="sheet-tab sheet-tab_magie force_imp" value="magie" title="Compétences" /><span class="sheet-tab">Pouvoirs</span>
+        <input type="radio" name="attr_tab_nav" class="sheet-tab sheet-tab_craft" value="craft" title="Notes" /><span class="sheet-tab">Notes</span>
+        <br />
+        <br />
+        <!-- TAB Compétences -->
+        <div class="sheet-tab_competences">
+            <div class="sheet-description">
+                <input type="checkbox" class="sheet-display sheet-display-munitions" name="attr_displayMunitions" value="1" checked="checked" />
+                <h2 class="sheet-display">Descriptions</h2>
+                <div class="sheet-display-munitions">
+                    <div class="sheet-group">
+                        <div class="sheet-row">
+                            <div class="sheet-col-12">
+                                <div class="sheet-row">
+                                    <div class="sheet-col-1">Nom&nbsp;:</div>
+                                    <div class="sheet-col-6"><input type="text" name="attr_Personnage_Nom" class="sheet-noBorder"></div>
+                                    <div class="sheet-col-2">Expérience&nbsp;:</div>
+                                    <div class="sheet-col-1"><input type="text" name="attr_Exp_current" class="sheet-noBorder"></div>
+                                    <div class="sheet-col-1">/&nbsp;Total&nbsp;:</div>
+                                    <div class="sheet-col-1"><input type="text" name="attr_Exp_all" class="sheet-noBorder"></div>
+                                </div>
+                                <div class="sheet-row">
+                                    <div class="sheet-col-1">Origine&nbsp;:</div>
+                                    <div class="sheet-col-3"><input type="text" name="attr_Personnage_Origine" class="sheet-noBorder"></div>
+                                    <div class="sheet-col-1">Culture&nbsp;:</div>
+                                    <div class="sheet-col-3"><input type="text" name="attr_Personnage_Culture" class="sheet-noBorder"></div>
+                                    <div class="sheet-col-1">Besognes&nbsp;:</div>
+                                    <div class="sheet-col-3"><input type="text" name="attr_Personnage_Besogne" class="sheet-noBorder"></div>
+                                </div>
+                                <div class="sheet-row">
+                                    <div class="sheet-col-1">Sexe&nbsp;: </div>
+                                    <div class="sheet-col-2"><input type="text" class="sheet-noBorder" name="attr_Personnage_Sex"></div>
+                                    <div class="sheet-col-1">Âge&nbsp;: </div>
+                                    <div class="sheet-col-2"><input type="text" class="sheet-noBorder" name="attr_Personnage_Age"></div>
+                                    <div class="sheet-col-1">Taille&nbsp;: </div>
+                                    <div class="sheet-col-2"><input type="text" class="sheet-noBorder" name="attr_Personnage_Taille"></div>
+                                    <div class="sheet-col-1">Poids&nbsp;: </div>
+                                    <div class="sheet-col-2"><input type="text" class="sheet-noBorder" name="attr_Personnage_Poids"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sheet-row">
+                        <div class="sheet-col-6">
+                            <div class="sheet-tableth sheet-row">
+                                <div class="sheet-col-12">Mois&nbsp;:&nbsp;
+                                    <select name="attr_mois-select">
+                                        <option value="Aucun.">Repos</option>
+                                        <option value="Connaissance+I Plaisir+I Pouvoir-I Violence-I">Bonheur</option>
+                                        <option value=" Plaisir+I  Richesse+I Violence+I">Conquêtes</option>
+                                        <option value=" Pouvoir+I ">Croisades</option>
+                                        <option value=" Plaisir-I Pouvoir+I  Violence+I">Désolation</option>
+                                        <option value="Connaissance-I Richesse+I Violence+I">Guerre</option>
+                                        <option value=" Plaisir+I Pouvoir+I ">Séparations</option>
+                                        <option value="Connaissance+I Richesse-I Violence-I">Tristesse</option>
+                                    </select>
+                                </div>
+                                <div class="sheet-col-12"> <input type="text" name="attr_mois" class="sheet-noBorder" value="changement : @{mois-select}" disabled></div>
+                            </div>
+                            <div class="sheet-group">
+                                <div class="sheet-row">
+                                    <div class="sheet-col-4"><input type="text" class="sheet-noBorder" value="Désirs" disabled /></div>
+                                    <div class="sheet-col-2"><input type="text" class="sheet-noBorder" value="Total" disabled /></div>
+                                    <div class="sheet-col-2"><input type="text" class="sheet-noBorder" value="Base" disabled /></div>
+                                    <div class="sheet-col-2"><input type="text" class="sheet-noBorder" value="Mois" disabled /></div>
+                                    <div class="sheet-col-2"><input type="text" class="sheet-noBorder" value="Arme" disabled /></div>
+                                </div>
+                                <div class="sheet-row">
+                                    <div class="sheet-col-4">Connaissance</div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_connaissance_total"
+                                            value="(@{connaissance} + @{connaissance_mod}+ @{connaissance_god})" disabled />
+                                    </div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_connaissance" value="0" min="0" max="6" /></div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_connaissance_mod" min="-2" max="2" min="" value="0" /></div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_connaissance_god" min="-6" max="6" value="0" /></div>
+                                </div>
+                                <div class="sheet-row">
+                                    <div class="sheet-col-4">Plaisir</div>
+                                    <div class="sheet-col-2">
+                                        <input type="number" class="sheet-noBorder" name="attr_plaisir_total" value="@{plaisir}+@{plaisir_mod}+@{plaisir_god}" disabled />
+                                    </div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_plaisir" value="0" min="0" max="6" /></div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_plaisir_mod" min="-2" max="2" min="" value="0" /></div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_plaisir_god" min="-6" max="6" value="0" /></div>
+                                </div>
+                                <div class="sheet-row">
+                                    <div class="sheet-col-4">Pouvoir</div>
+                                    <div class="sheet-col-2">
+                                        <input type="number" class="sheet-noBorder" name="attr_pouvoir_total" value="@{pouvoir}+@{pouvoir_mod}+@{pouvoir_god}" disabled />
+                                    </div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_pouvoir" value="0" min="0" max="6" /></div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_pouvoir_mod" min="-2" max="2" min="" value="0" />
+                                    </div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_pouvoir_god" min="-6" max="6" value="0" /></div>
+                                </div>
+                                <div class="sheet-row">
+                                    <div class="sheet-col-4">Richesse</div>
+                                    <div class="sheet-col-2">
+                                        <input type="number" class="sheet-noBorder" name="attr_richesse_total" value="@{richesse}+@{richesse_mod}+@{richesse_god}" disabled />
+                                    </div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_richesse" value="0" min="0" max="6" /></div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_richesse_mod" min="-2" max="2" min="" value="0" /></div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_richesse_god" min="-6" max="6" value="0" /></div>
+                                </div>
+                                <div class="sheet-row">
+                                    <div class="sheet-col-4">Violence</div>
+                                    <div class="sheet-col-2">
+                                        <input type="number" class="sheet-noBorder" name="attr_violence_total" value="@{violence}+@{violence_mod}+@{violence_god}" disabled />
+                                    </div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_violence" value="0" min="0" max="6" /></div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_violence_mod" min="-2" max="2" min="" value="0" /></div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_violence_god" min="-6" max="6" value="0" /></div>
+                                </div>
+                            </div>
+                            <div class="sheet-tableth sheet-row">
+                                <div class="sheet-col-12">
+                                    <div class="sheet-tableth sheet-row">
+                                        <div class="sheet-col-12">
+                                            Valeur&nbsp;des&nbsp;rangs&nbsp;:1&nbsp;/&nbsp;6&nbsp;/&nbsp;11&nbsp;/&nbsp;21&nbsp;/&nbsp;41&nbsp;Expériences
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="sheet-group">
+                                <div class="sheet-row">
+                                    <div class="sheet-col-4"><input type="text" class="sheet-noBorder" value="Compétence" disabled></div>
+                                    <div class="sheet-col-2"><input type="text" class="sheet-noBorder" value="Total" disabled></div>
+                                    <div class="sheet-col-2"><input type="text" class="sheet-noBorder" value="Rang" disabled></div>
+                                    <div class="sheet-col-2"><input type="text" class="sheet-noBorder" value="Bonus" disabled></div>
+                                    <div class="sheet-col-2"><input type="text" class="sheet-noBorder" value="Exp" disabled /></div>
+                                </div>
+                                <div class="sheet-row">
+                                    <div class="sheet-col-4">Administrateur</div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_administrateur_total" value="@{administrateur}+@{administrateur_god}" disabled></div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_administrateur" min="1" max="6" value="1"></div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_administrateur_god" min="0" max="2" value="0"></div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_administrateur-exp" min="1" max="81" value="1" /></div>
+                                </div>
+                                <div class="sheet-row">
+                                    <div class="sheet-col-4">Artisan</div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_artisan_total" value="@{artisan}+@{artisan_god}" disabled></div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_artisan" min="1" max="6" value="1"></div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_artisan_god" min="0" max="2" value="0"></div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_artisan-exp" min="1" max="81" value="1" /></div>
+                                </div>
+                                <div class="sheet-row">
+                                    <div class="sheet-col-4">Artiste</div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_artiste_total" value="@{artiste}+@{artiste_god}" disabled></div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_artiste" min="1" max="6" value="1"></div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_artiste_god" min="0" max="2" value="0"></div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_artiste-exp" min="1" max="81" value="1" /></div>
+                                </div>
+                                <div class="sheet-row">
+                                    <div class="sheet-col-4">Athléte</div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_athlete_total" value="@{athlete}+@{athlete_god}" disabled></div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_athlete" min="1" max="6" value="1"></div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_athlete_god" min="0" max="2" value="0"></div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_athlete-exp" min="1" max="81" value="1" /></div>
+                                </div>
+                                <div class="sheet-row">
+                                    <div class="sheet-col-4">Bagarreur</div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_bagarreur_total" value="@{bagarreur}+@{bagarreur_god}" disabled></div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_bagarreur" min="1" max="6" value="1"></div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_bagarreur_god" min="0" max="2" value="0"></div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_bagarreur-exp" min="1" max="81" value="1" /></div>
+                                </div>
+                                <div class="sheet-row">
+                                    <div class="sheet-col-4">Batelier</div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_batelier_total" value="@{batelier}+@{batelier_god}" disabled></div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_batelier" min="1" max="6" value="1"></div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_batelier_god" min="0" max="2" value="0"></div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_batelier-exp" min="1" max="81" value="1" /></div>
+                                </div>
+                                <div class="sheet-row">
+                                    <div class="sheet-col-4">Bougeard</div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_bougeard_total" value="@{bougeard}+@{bougeard_god}" disabled></div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_bougeard" min="1" max="6" value="1"></div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_bougeard_god" min="0" max="2" value="0"></div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_bougeard-exp" min="1" max="81" value="1" /></div>
+                                </div>
+                                <div class="sheet-row">
+                                    <div class="sheet-col-4">Bricoleur</div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_bricoleur_total" value="@{bricoleur}+@{bricoleur_god}" disabled></div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_bricoleur" min="1" max="6" value="1"></div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_bricoleur_god" min="0" max="2" value="0"></div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_bricoleur-exp" min="1" max="81" value="1" /></div>
+                                </div>
+                                <div class="sheet-row">
+                                    <div class="sheet-col-4">Citadin</div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_citadin_total" value="@{citadin}+@{citadin_god}" disabled></div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_citadin" min="1" max="6" value="1"></div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_citadin_god" min="0" max="2" value="0"></div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_citadin-exp" min="1" max="81" value="1" /></div>
+                                </div>
+                                <div class="sheet-row">
+                                    <div class="sheet-col-4">Eclaireur</div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_eclaireur_total" value="@{eclaireur}+@{eclaireur_god}" disabled></div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_eclaireur" min="1" max="6" value="1"></div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_eclaireur_god" min="0" max="2" value="0"></div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_eclaireur-exp" min="1" max="81" value="1" /></div>
+                                </div>
+                                <div class="sheet-row">
+                                    <div class="sheet-col-4">Erudit</div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_erudit_total" value="@{erudit}+@{erudit_god}" disabled></div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_erudit" min="1" max="6" value="1"></div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_erudit_god" min="0" max="2" value="0"></div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_erudit-exp" min="1" max="81" value="1" /></div>
+                                </div>
+                                <div class="sheet-row">
+                                    <div class="sheet-col-4">Ferrailleur</div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_ferrailleur_total" value="@{ferrailleur}+@{ferrailleur_god}" disabled></div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_ferrailleur" min="1" max="6" value="1"></div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_ferrailleur_god" min="0" max="2" value="0"></div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_ferrailleur-exp" min="1" max="81" value="1" /></div>
+                                </div>
+                                <div class="sheet-row">
+                                    <div class="sheet-col-4">Gentilhomme</div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_gentilhomme_total" value="@{gentilhomme}+@{gentilhomme_god}" disabled></div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_gentilhomme" min="1" max="6" value="1"></div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_gentilhomme_god" min="0" max="2" value="0"></div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_gentilhomme-exp" min="1" max="81" value="1" /></div>
+                                </div>
+                                <div class="sheet-row">
+                                    <div class="sheet-col-4">Intriguant</div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_intriguant_total" value="@{intriguant}+@{intriguant_god}" disabled></div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_intriguant" min="1" max="6" value="1"></div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_intriguant_god" min="0" max="2" value="0"></div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_intriguant-exp" min="1" max="81" value="1" /></div>
+                                </div>
+                                <div class="sheet-row">
+                                    <div class="sheet-col-4">Larron</div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_larron_total" value="@{larron}+@{larron_god}" disabled></div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_larron" min="1" max="6" value="1"></div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_larron_god" min="0" max="2" value="0"></div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_larron-exp" min="1" max="81" value="1" /></div>
+                                </div>
+                                <div class="sheet-row">
+                                    <div class="sheet-col-4">Marchand</div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_marchand_total" value="@{marchand}+@{marchand_god}" disabled></div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_marchand" min="1" max="6" value="1"></div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_marchand_god" min="0" max="2" value="0"></div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_marchand-exp" min="1" max="81" value="1" /></div>
+                                </div>
+                                <div class="sheet-row">
+                                    <div class="sheet-col-4">Medecin</div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_medecin_total" value="@{medecin}+@{medecin_god}" disabled></div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_medecin" min="1" max="6" value="1"></div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_medecin_god" min="0" max="2" value="0"></div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_medecin-exp" min="1" max="81" value="1" /></div>
+                                </div>
+                                <div class="sheet-row">
+                                    <div class="sheet-col-4">Orateur</div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_orateur_total" value="@{orateur}+@{orateur_god}" disabled></div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_orateur" min="1" max="6" value="1"></div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_orateur_god" min="0" max="2" value="0"></div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_orateur-exp" min="1" max="81" value="1" /></div>
+                                </div>
+                                <div class="sheet-row">
+                                    <div class="sheet-col-4">Paysan</div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_paysan_total" value="@{paysan}+@{paysan_god}" disabled></div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_paysan" min="1" max="6" value="1"></div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_paysan_god" min="0" max="2" value="0"></div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_paysan-exp" min="1" max="81" value="1" /></div>
+                                </div>
+                                <div class="sheet-row">
+                                    <div class="sheet-col-4">Saltimbanque</div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_saltimbanque_total" value="@{saltimbanque}+@{saltimbanque_god}" disabled></div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_saltimbanque" min="1" max="6" value="1"></div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_saltimbanque_god" min="0" max="2" value="0"></div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_saltimbanque-exp" min="1" max="81" value="1" /></div>
+                                </div>
+                                <div class="sheet-row">
+                                    <div class="sheet-col-4">Soldat</div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_soldat_total" value="@{soldat}+@{soldat_god}" disabled></div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_soldat" min="1" max="6" value="1"></div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_soldat_god" min="0" max="2" value="0"></div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_soldat-exp" min="1" max="81" value="1" /></div>
+                                </div>
+                                <div class="sheet-row">
+                                    <div class="sheet-col-4">Tireur</div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_tireur_total" value="@{tireur}+@{tireur_god}" disabled></div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_tireur" min="1" max="6" value="1"></div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_tireur_god" min="0" max="2" value="0"></div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_tireur-exp" min="1" max="81" value="1" /></div>
+                                </div>
+                                <div class="sheet-row">
+                                    <div class="sheet-col-4">Veneur</div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_veneur_total" value="@{veneur}+@{veneur_god}" disabled></div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_veneur" min="1" max="6" value="1"></div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_veneur_god" min="0" max="2" value="0"></div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_veneur-exp" min="1" max="81" value="1" /></div>
+                                </div>
+                                <div class="sheet-row">
+                                    <div class="sheet-col-4">Voyageur</div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_voyageur_total" value="@{voyageur}+@{voyageur_god}" disabled></div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_voyageur" min="1" max="6" value="1"></div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_voyageur_god" min="0" max="2" value="0"></div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_voyageur-exp" min="1" max="81" value="1" /></div>
+                                </div>
+                                <div class="sheet-row">
+                                    <div class="sheet-col-4">Porteur</div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_porteur_total" value="@{porteur}+@{porteur_god}" disabled></div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_porteur" min="1" max="6" value="1"></div>
+                                    <div class="sheet-col-2"><input type="number" name="attr_porteur_god" min="0" max="2" value="0"></div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_porteur-exp" min="1" max="81" value="1" /></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="sheet-col-6">
+                            <div class="sheet-tableth sheet-row">
+                                <div class="sheet-col-12">
+                                    <div class="sheet-tableth sheet-row">
+                                        <div class="sheet-col-12">
+                                            &nbsp;Aspects&nbsp;Failles&nbsp;et&nbsp;Séquelles&nbsp;
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="sheet-tableth sheet-row">
+                                <div class="sheet-col-12">
+                                    <div class="sheet-tableth sheet-row">
+                                        <div class="sheet-col-12">
+                                            Valeur&nbsp;des&nbsp;rangs&nbsp;:1&nbsp;/&nbsp;6&nbsp;/&nbsp;11&nbsp;/&nbsp;21&nbsp;/&nbsp;41&nbsp;Expériences
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="sheet-tableth sheet-row">
+                                <div class="sheet-col-6"></div>
+                                <div class="sheet-col-2">A/S/F</div>
+                                <div class="sheet-col-2">Rang</div>
+                                <div class="sheet-col-2">Exp</div>
+                            </div>
+                            <div class="sheet-group">
+                                <div class="sheet-row">
+                                    <div class="sheet-col-6"><input type="text" class="sheet-noBorder" name="attr_aspects_nom_1" value="-------------" /></div>
+                                    <div class="sheet-col-2">
+                                        <select name="attr_AspectType_1">
+                                            <option value="Aspect" selected>A</option>
+                                            <option value="Sequelle">S</option>
+                                            <option value="Faille">F</option>
+                                        </select>
+                                    </div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_aspects_score_1" max="6" min="-6" value="0" /></div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_aspects_exp_1" value="0" /></div>
+                                </div>
+                                <div class="sheet-row">
+                                    <div class="sheet-col-6"><input type="text" class="sheet-noBorder" name="attr_aspects_nom_2" value="-------------" /></div>
+                                    <div class="sheet-col-2">
+                                        <select name="attr_AspectType_2">
+                                            <option value="Aspect" selected>A</option>
+                                            <option value="Sequelle">S</option>
+                                            <option value="Faille">F</option>
+                                        </select>
+                                    </div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_aspects_score_2" max="6" min="-6" value="0" /></div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_aspects_exp_2" value="0" /></div>
+                                </div>
+                                <div class="sheet-row">
+                                    <div class="sheet-col-6"><input type="text" class="sheet-noBorder" name="attr_aspects_nom_3" value="-------------" /></div>
+                                    <div class="sheet-col-2">
+                                        <select name="attr_AspectType_3">
+                                            <option value="Aspect" selected>A</option>
+                                            <option value="Sequelle">S</option>
+                                            <option value="Faille">F</option>
+                                        </select>
+                                    </div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_aspects_score_3" max="6" min="-6" value="0" /></div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_aspects_exp_3" value="0" /></div>
+                                </div>
+                                <div class="sheet-row">
+                                    <div class="sheet-col-6"><input type="text" class="sheet-noBorder" name="attr_aspects_nom_4" value="-------------" /></div>
+                                    <div class="sheet-col-2">
+                                        <select name="attr_AspectType_4">
+                                            <option value="Aspect" selected>A</option>
+                                            <option value="Sequelle">S</option>
+                                            <option value="Faille">F</option>
+                                        </select>
+                                    </div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_aspects_score_4" max="6" min="-6" value="0" /></div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_aspects_exp_4" value="0" /></div>
+                                </div>
+                                <div class="sheet-row">
+                                    <div class="sheet-col-6"><input type="text" class="sheet-noBorder" name="attr_aspects_nom_5" value="-------------" /></div>
+                                    <div class="sheet-col-2">
+                                        <select name="attr_AspectType_5">
+                                            <option value="Aspect" selected>A</option>
+                                            <option value="Sequelle">S</option>
+                                            <option value="Faille">F</option>
+                                        </select>
+                                    </div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_aspects_score_5" max="6" min="-6" value="0" /></div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_aspects_exp_5" value="0" /></div>
+                                </div>
+                                <div class="sheet-row">
+                                    <div class="sheet-col-6"><input type="text" class="sheet-noBorder" name="attr_aspects_nom_6" value="-------------" /></div>
+                                    <div class="sheet-col-2">
+                                        <select name="attr_AspectType_6">
+                                            <option value="Aspect" selected>A</option>
+                                            <option value="Sequelle">S</option>
+                                            <option value="Faille">F</option>
+                                        </select>
+                                    </div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_aspects_score_6" max="6" min="-6" value="0" /></div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_aspects_exp_6" value="0" /></div>
+                                </div>
+                                <div class="sheet-row">
+                                    <div class="sheet-col-6"><input type="text" class="sheet-noBorder" name="attr_aspects_nom_7" value="-------------" /></div>
+                                    <div class="sheet-col-2">
+                                        <select name="attr_AspectType_7">
+                                            <option value="Aspect" selected>A</option>
+                                            <option value="Sequelle">S</option>
+                                            <option value="Faille">F</option>
+                                        </select>
+                                    </div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_aspects_score_7" max="6" min="-6" value="0" /></div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_aspects_exp_7" value="0" /></div>
+                                </div>
+                                <div class="sheet-row">
+                                    <div class="sheet-col-6"><input type="text" class="sheet-noBorder" name="attr_aspects_nom_8" value="-------------" /></div>
+                                    <div class="sheet-col-2">
+                                        <select name="attr_AspectType_8">
+                                            <option value="Aspect" selected>A</option>
+                                            <option value="Sequelle">S</option>
+                                            <option value="Faille">F</option>
+                                        </select>
+                                    </div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_aspects_score_8" max="6" min="-6" value="0" /></div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_aspects_exp_8" value="0" /></div>
+                                </div>
+                                <div class="sheet-row">
+                                    <div class="sheet-col-6"><input type="text" class="sheet-noBorder" name="attr_aspects_nom_9" value="-------------" /></div>
+                                    <div class="sheet-col-2">
+                                        <select name="attr_AspectType_9">
+                                            <option value="Aspect" selected>A</option>
+                                            <option value="Sequelle">S</option>
+                                            <option value="Faille">F</option>
+                                        </select>
+                                    </div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_aspects_score_9" max="6" min="-6" value="0" /></div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_aspects_exp_9" value="0" /></div>
+                                </div>
+                                <div class="sheet-row">
+                                    <div class="sheet-col-6"><input type="text" class="sheet-noBorder" name="attr_aspects_nom_10" value="-------------" /></div>
+                                    <div class="sheet-col-2">
+                                        <select name="attr_AspectType_10">
+                                            <option value="Aspect" selected>A</option>
+                                            <option value="Sequelle">S</option>
+                                            <option value="Faille">F</option>
+                                        </select>
+                                    </div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_aspects_score_10" max="6" min="-6" value="0" /></div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_aspects_exp_10" value="0" /></div>
+                                </div>
+                                <div class="sheet-row">
+                                    <div class="sheet-col-6"><input type="text" class="sheet-noBorder" name="attr_aspects_nom_11" value="-------------" /></div>
+                                    <div class="sheet-col-2">
+                                        <select name="attr_AspectType_11">
+                                            <option value="Aspect" selected>A</option>
+                                            <option value="Sequelle">S</option>
+                                            <option value="Faille">F</option>
+                                        </select>
+                                    </div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_aspects_score_11" max="6" min="-6" value="0" /></div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_aspects_exp_11" value="0" /></div>
+                                </div>
+                                <div class="sheet-row">
+                                    <div class="sheet-col-6"><input type="text" class="sheet-noBorder" name="attr_aspects_nom_12" value="-------------" /></div>
+                                    <div class="sheet-col-2">
+                                        <select name="attr_AspectType_12">
+                                            <option value="Aspect" selected>A</option>
+                                            <option value="Sequelle">S</option>
+                                            <option value="Faille">F</option>
+                                        </select>
+                                    </div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_aspects_score_12" max="6" min="-6" value="0" /></div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_aspects_exp_12" value="0" /></div>
+                                </div>
+                                <div class="sheet-row">
+                                    <div class="sheet-col-6"><input type="text" class="sheet-noBorder" name="attr_aspects_nom_13" value="-------------" /></div>
+                                    <div class="sheet-col-2">
+                                        <select name="attr_AspectType_13">
+                                            <option value="Aspect" selected>A</option>
+                                            <option value="Sequelle">S</option>
+                                            <option value="Faille">F</option>
+                                        </select>
+                                    </div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_aspects_score_13" max="6" min="-6" value="0" /></div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_aspects_exp_13" value="0" /></div>
+                                </div>
+                                <div class="sheet-row">
+                                    <div class="sheet-col-6"><input type="text" class="sheet-noBorder" name="attr_aspects_nom_14" value="-------------" /></div>
+                                    <div class="sheet-col-2">
+                                        <select name="attr_AspectType_14">
+                                            <option value="Aspect" selected>A</option>
+                                            <option value="Sequelle">S</option>
+                                            <option value="Faille">F</option>
+                                        </select>
+                                    </div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_aspects_score_14" max="6" min="-6" value="0" /></div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_aspects_exp_14" value="0" /></div>
+                                </div>
+                                <div class="sheet-row">
+                                    <div class="sheet-col-6"><input type="text" class="sheet-noBorder" name="attr_aspects_nom_15" value="-------------" /></div>
+                                    <div class="sheet-col-2">
+                                        <select name="attr_AspectType_15">
+                                            <option value="Aspect" selected>A</option>
+                                            <option value="Sequelle">S</option>
+                                            <option value="Faille">F</option>
+                                        </select>
+                                    </div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_aspects_score_15" max="6" min="-6" value="0" /></div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_aspects_exp_15" value="0" /></div>
+                                </div>
+                                <div class="sheet-row">
+                                    <div class="sheet-col-6"><input type="text" class="sheet-noBorder" name="attr_aspects_nom_16" value="-------------" /></div>
+                                    <div class="sheet-col-2">
+                                        <select name="attr_AspectType_16">
+                                            <option value="Aspect" selected>A</option>
+                                            <option value="Sequelle">S</option>
+                                            <option value="Faille">F</option>
+                                        </select>
+                                    </div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_aspects_score_16" max="6" min="-6" value="0" /></div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_aspects_exp_16" value="0" /></div>
+                                </div>
+                                <div class="sheet-row">
+                                    <div class="sheet-col-6"><input type="text" class="sheet-noBorder" name="attr_aspects_nom_17" value="-------------" /></div>
+                                    <div class="sheet-col-2">
+                                        <select name="attr_AspectType_17">
+                                            <option value="Aspect" selected>A</option>
+                                            <option value="Sequelle">S</option>
+                                            <option value="Faille">F</option>
+                                        </select>
+                                    </div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_aspects_score_17" max="6" min="-6" value="0" /></div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_aspects_exp_17" value="0" /></div>
+                                </div>
+                                <div class="sheet-row">
+                                    <div class="sheet-col-6"><input type="text" class="sheet-noBorder" name="attr_aspects_nom_18" value="-------------" /></div>
+                                    <div class="sheet-col-2">
+                                        <select name="attr_AspectType_18">
+                                            <option value="Aspect" selected>A</option>
+                                            <option value="Sequelle">S</option>
+                                            <option value="Faille">F</option>
+                                        </select>
+                                    </div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_aspects_score_18" max="6" min="-6" value="0" /></div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_aspects_exp_18" value="0" /></div>
+                                </div>
+                                <div class="sheet-row">
+                                    <div class="sheet-col-6"><input type="text" class="sheet-noBorder" name="attr_aspects_nom_19" value="-------------" /></div>
+                                    <div class="sheet-col-2">
+                                        <select name="attr_AspectType_19">
+                                            <option value="Aspect" selected>A</option>
+                                            <option value="Sequelle">S</option>
+                                            <option value="Faille">F</option>
+                                        </select>
+                                    </div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_aspects_score_19" max="6" min="-6" value="0" /></div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_aspects_exp_19" value="0" /></div>
+                                </div>
+                                <div class="sheet-row">
+                                    <div class="sheet-col-6"><input type="text" class="sheet-noBorder" name="attr_aspects_nom_20" value="-------------" /></div>
+                                    <div class="sheet-col-2">
+                                        <select name="attr_AspectType_20">
+                                            <option value="Aspect" selected>A</option>
+                                            <option value="Sequelle">S</option>
+                                            <option value="Faille">F</option>
+                                        </select>
+                                    </div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_aspects_score_20" max="6" min="-6" value="0" /></div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_aspects_exp_20" value="0" /></div>
+                                </div>
+                                <div class="sheet-row">
+                                    <div class="sheet-col-6"><input type="text" class="sheet-noBorder" name="attr_aspects_nom_21" value="-------------" /></div>
+                                    <div class="sheet-col-2">
+                                        <select name="attr_AspectType_21">
+                                            <option value="Aspect" selected>A</option>
+                                            <option value="Sequelle">S</option>
+                                            <option value="Faille">F</option>
+                                        </select>
+                                    </div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_aspects_score_21" max="6" min="-6" value="0" /></div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_aspects_exp_21" value="0" /></div>
+                                </div>
+                                <div class="sheet-row">
+                                    <div class="sheet-col-6"><input type="text" class="sheet-noBorder" name="attr_aspects_nom_22" value="-------------" /></div>
+                                    <div class="sheet-col-2">
+                                        <select name="attr_AspectType_22">
+                                            <option value="Aspect" selected>A</option>
+                                            <option value="Sequelle">S</option>
+                                            <option value="Faille">F</option>
+                                        </select>
+                                    </div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_aspects_score_22" max="6" min="-6" value="0" /></div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_aspects_exp_22" value="0" /></div>
+                                </div>
+                                <div class="sheet-row">
+                                    <div class="sheet-col-6"><input type="text" class="sheet-noBorder" name="attr_aspects_nom_23" value="-------------" /></div>
+                                    <div class="sheet-col-2">
+                                        <select name="attr_AspectType_23">
+                                            <option value="Aspect" selected>A</option>
+                                            <option value="Sequelle">S</option>
+                                            <option value="Faille">F</option>
+                                        </select>
+                                    </div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_aspects_score_23" max="6" min="-6" value="0" /></div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_aspects_exp_23" value="0" /></div>
+                                </div>
+                                <div class="sheet-row">
+                                    <div class="sheet-col-6"><input type="text" class="sheet-noBorder" name="attr_aspects_nom_24" value="-------------" /></div>
+                                    <div class="sheet-col-2">
+                                        <select name="attr_AspectType_24">
+                                            <option value="Aspect" selected>A</option>
+                                            <option value="Sequelle">S</option>
+                                            <option value="Faille">F</option>
+                                        </select>
+                                    </div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_aspects_score_24" max="6" min="-6" value="0" /></div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_aspects_exp_24" value="0" /></div>
+                                </div>
+                                <div class="sheet-row">
+                                    <div class="sheet-col-6"><input type="text" class="sheet-noBorder" name="attr_aspects_nom_25" value="-------------" /></div>
+                                    <div class="sheet-col-2">
+                                        <select name="attr_AspectType_25">
+                                            <option value="Aspect" selected>A</option>
+                                            <option value="Sequelle">S</option>
+                                            <option value="Faille">F</option>
+                                        </select>
+                                    </div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_aspects_score_25" max="6" min="-6" value="0" /></div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_aspects_exp_25" value="0" /></div>
+                                </div>
+                                <div class="sheet-row">
+                                    <div class="sheet-col-6"><input type="text" class="sheet-noBorder" name="attr_aspects_nom_26" value="-------------" /></div>
+                                    <div class="sheet-col-2">
+                                        <select name="attr_AspectType_26">
+                                            <option value="Aspect" selected>A</option>
+                                            <option value="Sequelle">S</option>
+                                            <option value="Faille">F</option>
+                                        </select>
+                                    </div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_aspects_score_26" max="6" min="-6" value="0" /></div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_aspects_exp_26" value="0" /></div>
+                                </div>
+                                <div class="sheet-row">
+                                    <div class="sheet-col-6"><input type="text" class="sheet-noBorder" name="attr_aspects_nom_27" value="-------------" /></div>
+                                    <div class="sheet-col-2">
+                                        <select name="attr_AspectType_27">
+                                            <option value="Aspect" selected>A</option>
+                                            <option value="Sequelle">S</option>
+                                            <option value="Faille">F</option>
+                                        </select>
+                                    </div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_aspects_score_27" max="6" min="-6" value="0" /></div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_aspects_exp_27" value="0" /></div>
+                                </div>
+                                <div class="sheet-row">
+                                    <div class="sheet-col-6"><input type="text" class="sheet-noBorder" name="attr_aspects_nom_28" value="-------------" /></div>
+                                    <div class="sheet-col-2">
+                                        <select name="attr_AspectType_28">
+                                            <option value="Aspect" selected>A</option>
+                                            <option value="Sequelle">S</option>
+                                            <option value="Faille">F</option>
+                                        </select>
+                                    </div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_aspects_score_28" max="6" min="-6" value="0" /></div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_aspects_exp_28" value="0" /></div>
+                                </div>
+                                <div class="sheet-row">
+                                    <div class="sheet-col-6"><input type="text" class="sheet-noBorder" name="attr_aspects_nom_29" value="-------------" /></div>
+                                    <div class="sheet-col-2">
+                                        <select name="attr_AspectType_29">
+                                            <option value="Aspect" selected>A</option>
+                                            <option value="Sequelle">S</option>
+                                            <option value="Faille">F</option>
+                                        </select>
+                                    </div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_aspects_score_29" max="6" min="-6" value="0" /></div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_aspects_exp_29" value="0" /></div>
+                                </div>
+                                <div class="sheet-row">
+                                    <div class="sheet-col-6"><input type="text" class="sheet-noBorder" name="attr_aspects_nom_30" value="-------------" /></div>
+                                    <div class="sheet-col-2">
+                                        <select name="attr_AspectType_30">
+                                            <option value="Aspect" selected>A</option>
+                                            <option value="Sequelle">S</option>
+                                            <option value="Faille">F</option>
+                                        </select>
+                                    </div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_aspects_score_30" max="6" min="-6" value="0" /></div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_aspects_exp_30" value="0" /></div>
+                                </div>
+                                <div class="sheet-row">
+                                    <div class="sheet-col-6"><input type="text" class="sheet-noBorder" name="attr_aspects_nom_31" value="-------------" /></div>
+                                    <div class="sheet-col-2">
+                                        <select name="attr_AspectType_31">
+                                            <option value="Aspect" selected>A</option>
+                                            <option value="Sequelle">S</option>
+                                            <option value="Faille">F</option>
+                                        </select>
+                                    </div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_aspects_score_31" max="6" min="-6" value="0" /></div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_aspects_exp_31" value="0" /></div>
+                                </div>
+                                <div class="sheet-row">
+                                    <div class="sheet-col-6"><input type="text" class="sheet-noBorder" name="attr_aspects_nom_32" value="-------------" /></div>
+                                    <div class="sheet-col-2">
+                                        <select name="attr_AspectType_32">
+                                            <option value="Aspect" selected>A</option>
+                                            <option value="Sequelle">S</option>
+                                            <option value="Faille">F</option>
+                                        </select>
+                                    </div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_aspects_score_32" max="6" min="-6" value="0" /></div>
+                                    <div class="sheet-col-2"><input type="number" class="sheet-noBorder" name="attr_aspects_exp_32" value="0" /></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="sheet-competences">
+                <h2 class="sheet-display">Action rapide</h2>
+                <div class="sheet-row">
+                    <div class="sheet-col-12">
+                        <div class="sheet-tableth sheet-row">
+                            <div class="sheet-col-2">Compétences</div>
+                            <div class="sheet-col-2">Aspect gratuit</div>
+                            <div class="sheet-col-2">Aspect payant</div>
+                            <div class="sheet-col-2">Aspect payant</div>
+                            <div class="sheet-col-1">Total</div>
+                            <div class="sheet-col-1">Risques</div>
+                            <div class="sheet-col-1">Difficulté</div>
+                            <div class="sheet-col-1">Bonus</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sheet-row">
+                    <div class="sheet-col-2">
+                        <select name="attr_comp_routine-select">
+                            <option value="0">----------------</option>
+                            <option value="@{administrateur_total}">Administrateur</option>
+                            <option value="@{artisan_total}">Artisan</option>
+                            <option value="@{artiste_total}">Artiste</option>
+                            <option value="@{athlete_total}">Athlete</option>
+                            <option value="@{bagarreur_total}">Bagarreur</option>
+                            <option value="@{batelier_total}">Batelier</option>
+                            <option value="@{bougeard_total}">Bougeard</option>
+                            <option value="@{bricoleur_total}">Bricoleur</option>
+                            <option value="@{citadin_total}">Citadin</option>
+                            <option value="@{eclaireur_total}">Eclaireur</option>
+                            <option value="@{erudit_total}">Erudit</option>
+                            <option value="@{ferraileur_total}">Ferraileur</option>
+                            <option value="@{gentilhomme_total}">Gentilhomme</option>
+                            <option value="@{intriguant_total}">Intriguant</option>
+                            <option value="@{larron_total}">Larron</option>
+                            <option value="@{marchand_total}">Marchand</option>
+                            <option value="@{medecin_total}">Medecin</option>
+                            <option value="@{orateur_total}">Orateur</option>
+                            <option value="@{paysan_total}">Paysan</option>
+                            <option value="@{saltimbanque_total}">Saltimbanque</option>
+                            <option value="@{soldat_total}">Soldat</option>
+                            <option value="@{tireur_total}">Tireur</option>
+                            <option value="@{veneur_total}">Veneur</option>
+                            <option value="@{voyageur_total}">Voyageur</option>
+                            <option value="@{porteur_total}">Porteur</option>
+                        </select>
+                    </div>
+                    <div class="sheet-col-2">
+                        <div class='pseudo-select-test'>
+                            <div class='pseudo-select'>
+                                <input type='hidden' name='attr_acrobatics' value='0'>
+                                <input class='select-filter' type='hidden' name='attr_asp1routine_select' value='@{acrobatics}'>
+                                <label class='acrobatics'><input type='radio' name='attr_asp1routine_select' value='@{acrobatics}' checked><span>---------</span></label>
+                                <label class='aspects_score_1'><input type='radio' name='attr_asp1routine_select' value='@{aspects_score_1}'><input type='text' name='attr_aspects_nom_1'
+                                        value='Aspect 1'></label>
+                                <label class='aspects_score_2'><input type='radio' name='attr_asp1routine_select' value='@{aspects_score_2}'><input type='text' name='attr_aspects_nom_2'
+                                        value='Aspect 2'></label>
+                                <label class='aspects_score_3'><input type='radio' name='attr_asp1routine_select' value='@{aspects_score_3}'><input type='text' name='attr_aspects_nom_3'
+                                        value='Aspect 3'></label>
+                                <label class='aspects_score_4'><input type='radio' name='attr_asp1routine_select' value='@{aspects_score_4}'><input type='text' name='attr_aspects_nom_4'
+                                        value='Aspect 4'></label>
+                                <label class='aspects_score_5'><input type='radio' name='attr_asp1routine_select' value='@{aspects_score_5}'><input type='text' name='attr_aspects_nom_5'
+                                        value='Aspect 5'></label>
+                                <label class='aspects_score_6'><input type='radio' name='attr_asp1routine_select' value='@{aspects_score_6}'><input type='text' name='attr_aspects_nom_6'
+                                        value='Aspect 6'></label>
+                                <label class='aspects_score_7'><input type='radio' name='attr_asp1routine_select' value='@{aspects_score_7}'><input type='text' name='attr_aspects_nom_7'
+                                        value='Aspect 7'></label>
+                                <label class='aspects_score_8'><input type='radio' name='attr_asp1routine_select' value='@{aspects_score_8}'><input type='text' name='attr_aspects_nom_8'
+                                        value='Aspect 8'></label>
+                                <label class='aspects_score_9'><input type='radio' name='attr_asp1routine_select' value='@{aspects_score_9}'><input type='text' name='attr_aspects_nom_9'
+                                        value='Aspect 9'></label>
+                                <label class='aspects_score_10'><input type='radio' name='attr_asp1routine_select' value='@{aspects_score_10}'><input type='text' name='attr_aspects_nom_10'
+                                        value='Aspect 10'></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sheet-col-2">
+                        <div class='pseudo-select-test'>
+                            <div class='pseudo-select'>
+                                <input type='hidden' name='attr_acrobatics' value='0'>
+                                <input class='select-filter' type='hidden' name='attr_asp2routine_select' value='@{acrobatics}'>
+                                <label class='acrobatics'><input type='radio' name='attr_asp2routine_select' value='@{acrobatics}' checked><span>---------</span></label>
+                                <label class='aspects_score_1'><input type='radio' name='attr_asp2routine_select' value='@{aspects_score_1}'><input type='text' name='attr_aspects_nom_1'
+                                        value='Aspect 1'></label>
+                                <label class='aspects_score_2'><input type='radio' name='attr_asp2routine_select' value='@{aspects_score_2}'><input type='text' name='attr_aspects_nom_2'
+                                        value='Aspect 2'></label>
+                                <label class='aspects_score_3'><input type='radio' name='attr_asp2routine_select' value='@{aspects_score_3}'><input type='text' name='attr_aspects_nom_3'
+                                        value='Aspect 3'></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sheet-col-2">
+                        <div class='pseudo-select-test'>
+                            <div class='pseudo-select'>
+                                <input type='hidden' name='attr_acrobatics' value='0'>
+                                <input class='select-filter' type='hidden' name='attr_asp3routine_select' value='@{acrobatics}'>
+                                <label class='acrobatics'><input type='radio' name='attr_asp3routine_select' value='@{acrobatics}' checked><span>---------</span></label>
+                                <label class='aspects_score_1'><input type='radio' name='attr_asp3routine_select' value='@{aspects_score_1}'><input type='text' name='attr_aspects_nom_1'
+                                        value='Aspect 1'></label>
+                                <label class='aspects_score_2'><input type='radio' name='attr_asp3routine_select' value='@{aspects_score_2}'><input type='text' name='attr_aspects_nom_2'
+                                        value='Aspect 2'></label>
+                                <label class='aspects_score_3'><input type='radio' name='attr_asp3routine_select' value='@{aspects_score_3}'><input type='text' name='attr_aspects_nom_3'
+                                        value='Aspect 3'></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sheet-col-1">
+                        <input type='number' name='attr_routine_total'
+                            value="@{asp1routine_select}+@{asp2routine_select}+@{asp3routine_select}+@{comp_routine-select}+@{routine_bonus}-@{routine_difficulte}" disabled />
+                    </div>
+                    <div class="sheet-col-1"><input type='number' name='attr_routine_risque' value="@{routine_total}-@{routine_jet}" disabled /></div>
+                    <div class="sheet-col-1"><input type='number' name='attr_routine_difficulte' value="0" min="0" /></div>
+                    <div class="sheet-col-1"><input type='number' name='attr_routine_bonus' value="0" min="0" /></div>
+                </div>
+                <br />
+                <div class="sheet-row">
+                    <div class="sheet-col-4">Dés&nbsp;lançés</div>
+                    <div class="sheet-col-2"><input type='number' name='attr_routine_jet' value="0" min="0" /></div>
+                    <div class="sheet-col-6">
+                        <button type="roll" value="/roll @{routine_jet}d6 @{Personnage_Nom} prends [[@{routine_risque}]] risques">
+                            <img src="https://drive.google.com/file/d/1WMuOc5Tsj9XXrxV-_EridDGBerpDv1d9/view" alt="DICE" />
+                        </button>
+                        <button type="roll" value=" &{template:default} {{name= Coopération de @{Personnage_Nom}  }} {{ Bonus=[[ ceil((@{routine_total}) / 2) ]] }}">coop</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- TAB Equipement -->
+        <div class="sheet-tab_equipement">
+            <div class="sheet-etats">
+                <input type="checkbox" class="sheet-display sheet-display-guns" name="attr_displayGuns" value="1" checked="checked" />
+                <h2 class="sheet-display">Etats</h2>
+                <div class="sheet-display-guns">
+                    <div class="sheet-group">
+                        <div class="sheet-row">
+                            <div class="sheet-col-12">
+                                <div class="sheet-col-2">Effort&nbsp;:(10&nbsp;-&nbsp;fatigue)</div>
+                                <div class="sheet-col-1"><input type="number" name="attr_Effort_current" class="sheet-noBorder" value="10"></div>
+                                <div class="sheet-col-1">Max=</div>
+                                <div class="sheet-col-1"><input type='number' name='attr_max_effort' value="10-@{sangsue}" min="0" disabled /></div>
+                                <div class="sheet-col-3">1pt de fatigue=+6pt d'effort</div>
+                                <div class="sheet-col-1">Sangsue</div>
+                                <div class="sheet-col-1"><input type='number' value="@{sangsue}" min="0" disabled /></div>
+                                <div class="sheet-col-1">Parasite</div>
+                                <div class="sheet-col-1"><input type='number' value="@{parasite}" min="0" disabled /></div>
+                            </div>
+                        </div>
+                        <div class="sheet-row">
+                            <div class="sheet-col-4">
+                                <div class="sheet-tableth sheet-row">
+                                    <div class="sheet-col-3">Fatigue</div>
+                                    <div class="sheet-col-7">
+                                        <input type="checkbox" name="attr_score_Fatigue_score_1" value="1" />
+                                        <input type="checkbox" name="attr_score_Fatigue_score_2" value="2" />
+                                        <input type="checkbox" name="attr_score_Fatigue_score_3" value="3" />
+                                        <input type="checkbox" name="attr_score_Fatigue_score_4" value="4" />
+                                        <input type="checkbox" name="attr_score_Fatigue_score_5" value="5" />
+                                        <input type="checkbox" name="attr_score_Fatigue_score_6" value="6" />
+                                    </div>
+                                    <div class="sheet-col-2"><input type="text" class="sheet-nightMode" name="attr_Fatigue_Exp" value="" /></div>
+                                </div>
+                                <div class="sheet-group">
+                                    <div class="sheet-row">
+                                        <div class="sheet-col-3">
+                                            <input type="checkbox" name="attr_six_Fatigue_score_1" value="1" />
+                                            <input type="checkbox" name="attr_six_Fatigue_score_2" value="2" />
+                                            <input type="checkbox" name="attr_six_Fatigue_score_3" value="3" />
+                                        </div>
+                                        <div class="sheet-col-7">
+                                            <input type="checkbox" name="attr_six_Fatigue_score_4" value="1" checked />
+                                            <input type="checkbox" name="attr_six_Fatigue_score_5" value="2" checked />
+                                            <input type="checkbox" name="attr_six_Fatigue_score_6" value="3" checked />
+                                            <input type="checkbox" name="attr_six_Fatigue_score_7" value="4" checked />
+                                            <input type="checkbox" name="attr_six_Fatigue_score_8" value="5" checked />
+                                            <input type="checkbox" name="attr_six_Fatigue_score_9" value="6" checked />
+                                        </div>
+                                        <div class="sheet-col-2">&nbsp;&nbsp;6</div>
+                                    </div>
+                                    <div class="sheet-row">
+                                        <div class="sheet-col-3">
+                                            <input type="checkbox" name="attr_neuf_Fatigue_score_1" value="1" />
+                                            <input type="checkbox" name="attr_neuf_Fatigue_score_2" value="2" />
+                                            <input type="checkbox" name="attr_neuf_Fatigue_score_3" value="3" />
+                                        </div>
+                                        <div class="sheet-col-7">
+                                            <input type="checkbox" name="attr_neuf_Fatigue_score_4" value="1" checked />
+                                            <input type="checkbox" name="attr_neuf_Fatigue_score_5" value="2" checked />
+                                            <input type="checkbox" name="attr_neuf_Fatigue_score_6" value="3" checked />
+                                            <input type="checkbox" name="attr_neuf_Fatigue_score_7" value="4" checked />
+                                            <input type="checkbox" name="attr_neuf_Fatigue_score_8" value="5" checked />
+                                            <input type="checkbox" name="attr_neuf_Fatigue_score_9" value="6" checked />
+                                        </div>
+                                        <div class="sheet-col-2">&nbsp;&nbsp;9</div>
+                                    </div>
+                                    <div class="sheet-row">
+                                        <div class="sheet-col-3">
+                                            <input type="checkbox" name="attr_douze_Fatigue_score_1" value="1" />
+                                            <input type="checkbox" name="attr_douze_Fatigue_score_2" value="2" />
+                                            <input type="checkbox" name="attr_douze_Fatigue_score_3" value="3" />
+                                        </div>
+                                        <div class="sheet-col-7">
+                                            <input type="checkbox" name="attr_douze_Fatigue_score_4" value="1" checked />
+                                            <input type="checkbox" name="attr_douze_Fatigue_score_5" value="2" checked />
+                                            <input type="checkbox" name="attr_douze_Fatigue_score_6" value="3" checked />
+                                            <input type="checkbox" name="attr_douze_Fatigue_score_7" value="4" checked />
+                                            <input type="checkbox" name="attr_douze_Fatigue_score_8" value="5" checked />
+                                            <input type="checkbox" name="attr_douze_Fatigue_score_9" value="6" checked />
+                                        </div>
+                                        <div class="sheet-col-2">&nbsp;&nbsp;12</div>
+                                    </div>
+                                    <div class="sheet-row">
+                                        <div class="sheet-col-3">
+                                            <input type="checkbox" name="attr_quinze_Fatigue_score_1" value="1" />
+                                            <input type="checkbox" name="attr_quinze_Fatigue_score_2" value="2" />
+                                            <input type="checkbox" name="attr_quinze_Fatigue_score_3" value="3" />
+                                        </div>
+                                        <div class="sheet-col-7">
+                                            <input type="checkbox" name="attr_quinze_Fatigue_score_4" value="1" checked />
+                                            <input type="checkbox" name="attr_quinze_Fatigue_score_5" value="2" checked />
+                                            <input type="checkbox" name="attr_quinze_Fatigue_score_6" value="3" checked />
+                                            <input type="checkbox" name="attr_quinze_Fatigue_score_7" value="4" checked />
+                                            <input type="checkbox" name="attr_quinze_Fatigue_score_8" value="5" checked />
+                                            <input type="checkbox" name="attr_quinze_Fatigue_score_9" value="6" checked />
+                                        </div>
+                                        <div class="sheet-col-2">&nbsp;&nbsp;15</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="sheet-col-4">
+                                <div class="sheet-tableth sheet-row">
+                                    <div class="sheet-col-3">Faiblesse</div>
+                                    <div class="sheet-col-7">
+                                        <input type="checkbox" name="attr_score_Faiblesse_score_1" value="1" />
+                                        <input type="checkbox" name="attr_score_Faiblesse_score_2" value="2" />
+                                        <input type="checkbox" name="attr_score_Faiblesse_score_3" value="3" />
+                                        <input type="checkbox" name="attr_score_Faiblesse_score_4" value="4" />
+                                        <input type="checkbox" name="attr_score_Faiblesse_score_5" value="5" />
+                                        <input type="checkbox" name="attr_score_Faiblesse_score_5" value="6" />
+                                    </div>
+                                    <div class="sheet-col-2"><input type="text" class="sheet-nightMode" name="attr_Faiblesse_Exp" value="" /></div>
+                                </div>
+                                <div class="sheet-group">
+                                    <div class="sheet-row">
+                                        <div class="sheet-col-3">
+                                            <input type="checkbox" name="attr_six_Faiblesse_score_1" value="1" />
+                                            <input type="checkbox" name="attr_six_Faiblesse_score_2" value="2" />
+                                            <input type="checkbox" name="attr_six_Faiblesse_score_3" value="3" />
+                                        </div>
+                                        <div class="sheet-col-7">
+                                            <input type="checkbox" name="attr_six_Faiblesse_score_4" value="1" checked />
+                                            <input type="checkbox" name="attr_six_Faiblesse_score_5" value="2" checked />
+                                            <input type="checkbox" name="attr_six_Faiblesse_score_6" value="3" checked />
+                                            <input type="checkbox" name="attr_six_Faiblesse_score_7" value="4" checked />
+                                            <input type="checkbox" name="attr_six_Faiblesse_score_8" value="5" checked />
+                                            <input type="checkbox" name="attr_six_Faiblesse_score_9" value="6" checked />
+                                        </div>
+                                        <div class="sheet-col-2">&nbsp;&nbsp;6</div>
+                                    </div>
+                                    <div class="sheet-row">
+                                        <div class="sheet-col-3">
+                                            <input type="checkbox" name="attr_neuf_Faiblesse_score_1" value="1" />
+                                            <input type="checkbox" name="attr_neuf_Faiblesse_score_2" value="2" />
+                                            <input type="checkbox" name="attr_neuf_Faiblesse_score_3" value="3" />
+                                        </div>
+                                        <div class="sheet-col-7">
+                                            <input type="checkbox" name="attr_neuf_Faiblesse_score_4" value="1" checked />
+                                            <input type="checkbox" name="attr_neuf_Faiblesse_score_5" value="2" checked />
+                                            <input type="checkbox" name="attr_neuf_Faiblesse_score_6" value="3" checked />
+                                            <input type="checkbox" name="attr_neuf_Faiblesse_score_7" value="4" checked />
+                                            <input type="checkbox" name="attr_neuf_Faiblesse_score_8" value="5" checked />
+                                            <input type="checkbox" name="attr_neuf_Faiblesse_score_9" value="6" checked />
+                                        </div>
+                                        <div class="sheet-col-2">&nbsp;&nbsp;9</div>
+                                    </div>
+                                    <div class="sheet-row">
+                                        <div class="sheet-col-3">
+                                            <input type="checkbox" name="attr_douze_Faiblesse_score_1" value="1" />
+                                            <input type="checkbox" name="attr_douze_Faiblesse_score_2" value="2" />
+                                            <input type="checkbox" name="attr_douze_Faiblesse_score_3" value="3" />
+                                        </div>
+                                        <div class="sheet-col-7">
+                                            <input type="checkbox" name="attr_douze_Faiblesse_score_4" value="1" checked />
+                                            <input type="checkbox" name="attr_douze_Faiblesse_score_5" value="2" checked />
+                                            <input type="checkbox" name="attr_douze_Faiblesse_score_6" value="3" checked />
+                                            <input type="checkbox" name="attr_douze_Faiblesse_score_7" value="4" checked />
+                                            <input type="checkbox" name="attr_douze_Faiblesse_score_8" value="5" checked />
+                                            <input type="checkbox" name="attr_douze_Faiblesse_score_9" value="6" checked />
+                                        </div>
+                                        <div class="sheet-col-2">&nbsp;&nbsp;12</div>
+                                    </div>
+                                    <div class="sheet-row">
+                                        <div class="sheet-col-3">
+                                            <input type="checkbox" name="attr_quinze_Faiblesse_score_1" value="1" />
+                                            <input type="checkbox" name="attr_quinze_Faiblesse_score_2" value="2" />
+                                            <input type="checkbox" name="attr_quinze_Faiblesse_score_3" value="3" />
+                                        </div>
+                                        <div class="sheet-col-7">
+                                            <input type="checkbox" name="attr_quinze_Faiblesse_score_4" value="1" checked />
+                                            <input type="checkbox" name="attr_quinze_Faiblesse_score_5" value="2" checked />
+                                            <input type="checkbox" name="attr_quinze_Faiblesse_score_6" value="3" checked />
+                                            <input type="checkbox" name="attr_quinze_Faiblesse_score_7" value="4" checked />
+                                            <input type="checkbox" name="attr_quinze_Faiblesse_score_8" value="5" checked />
+                                            <input type="checkbox" name="attr_quinze_Faiblesse_score_9" value="6" checked />
+                                        </div>
+                                        <div class="sheet-col-2">&nbsp;&nbsp;15</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="sheet-col-4">
+                                <div class="sheet-tableth sheet-row">
+                                    <div class="sheet-col-3">Tension</div>
+                                    <div class="sheet-col-7">
+                                        <input type="checkbox" name="attr_score_Tension_score_1" value="1" />
+                                        <input type="checkbox" name="attr_score_Tension_score_2" value="2" />
+                                        <input type="checkbox" name="attr_score_Tension_score_3" value="3" />
+                                        <input type="checkbox" name="attr_score_Tension_score_4" value="4" />
+                                        <input type="checkbox" name="attr_score_Tension_score_5" value="5" />
+                                        <input type="checkbox" name="attr_score_Tension_score_6" value="6" />
+                                    </div>
+                                    <div class="sheet-col-2"><input type="text" class="sheet-nightMode" name="attr_Tension_Exp" value="" /></div>
+                                </div>
+                                <div class="sheet-group">
+                                    <div class="sheet-row">
+                                        <div class="sheet-col-3">
+                                            <input type="checkbox" name="attr_six_Tension_score_1" value="1" />
+                                            <input type="checkbox" name="attr_six_Tension_score_2" value="2" />
+                                            <input type="checkbox" name="attr_six_Tension_score_3" value="3" />
+                                        </div>
+                                        <div class="sheet-col-7">
+                                            <input type="checkbox" name="attr_six_Tension_score_4" value="1" checked />
+                                            <input type="checkbox" name="attr_six_Tension_score_5" value="2" checked />
+                                            <input type="checkbox" name="attr_six_Tension_score_6" value="3" checked />
+                                            <input type="checkbox" name="attr_six_Tension_score_7" value="4" checked />
+                                            <input type="checkbox" name="attr_six_Tension_score_8" value="5" checked />
+                                            <input type="checkbox" name="attr_six_Tension_score_9" value="6" checked />
+                                        </div>
+                                        <div class="sheet-col-2">&nbsp;&nbsp;6</div>
+                                    </div>
+                                    <div class="sheet-row">
+                                        <div class="sheet-col-3">
+                                            <input type="checkbox" name="attr_neuf_Tension_score_1" value="1" />
+                                            <input type="checkbox" name="attr_neuf_Tension_score_2" value="2" />
+                                            <input type="checkbox" name="attr_neuf_Tension_score_3" value="3" />
+                                        </div>
+                                        <div class="sheet-col-7">
+                                            <input type="checkbox" name="attr_neuf_Tension_score_4" value="1" checked />
+                                            <input type="checkbox" name="attr_neuf_Tension_score_5" value="2" checked />
+                                            <input type="checkbox" name="attr_neuf_Tension_score_6" value="3" checked />
+                                            <input type="checkbox" name="attr_neuf_Tension_score_7" value="4" checked />
+                                            <input type="checkbox" name="attr_neuf_Tension_score_8" value="5" checked />
+                                            <input type="checkbox" name="attr_neuf_Tension_score_9" value="6" checked />
+                                        </div>
+                                        <div class="sheet-col-2">&nbsp;&nbsp;9</div>
+                                    </div>
+                                    <div class="sheet-row">
+                                        <div class="sheet-col-3">
+                                            <input type="checkbox" name="attr_douze_Tension_score_1" value="1" />
+                                            <input type="checkbox" name="attr_douze_Tension_score_2" value="2" />
+                                            <input type="checkbox" name="attr_douze_Tension_score_3" value="3" />
+                                        </div>
+                                        <div class="sheet-col-7">
+                                            <input type="checkbox" name="attr_douze_Tension_score_4" value="1" checked />
+                                            <input type="checkbox" name="attr_douze_Tension_score_5" value="2" checked />
+                                            <input type="checkbox" name="attr_douze_Tension_score_6" value="3" checked />
+                                            <input type="checkbox" name="attr_douze_Tension_score_7" value="4" checked />
+                                            <input type="checkbox" name="attr_douze_Tension_score_8" value="5" checked />
+                                            <input type="checkbox" name="attr_douze_Tension_score_9" value="6" checked />
+                                        </div>
+                                        <div class="sheet-col-2 ">&nbsp;&nbsp;12</div>
+                                    </div>
+                                    <div class="sheet-row">
+                                        <div class="sheet-col-3">
+                                            <input type="checkbox" name="attr_quinze_Tension_score_1" value="1" />
+                                            <input type="checkbox" name="attr_quinze_Tension_score_2" value="2" />
+                                            <input type="checkbox" name="attr_quinze_Tension_score_3" value="3" />
+                                        </div>
+                                        <div class="sheet-col-7">
+                                            <input type="checkbox" name="attr_quinze_Tension_score_4" value="1" checked />
+                                            <input type="checkbox" name="attr_quinze_Tension_score_5" value="2" checked />
+                                            <input type="checkbox" name="attr_quinze_Tension_score_6" value="3" checked />
+                                            <input type="checkbox" name="attr_quinze_Tension_score_7" value="4" checked />
+                                            <input type="checkbox" name="attr_quinze_Tension_score_8" value="5" checked />
+                                            <input type="checkbox" name="attr_quinze_Tension_score_9" value="6" checked />
+                                        </div>
+                                        <div class="sheet-col-2">&nbsp;&nbsp;15</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sheet-tableth sheet-row">
+                        <div class="sheet-col-2"><button type="roll">Show Recap</button></div>
+                        <div class="sheet-col-2">&nbsp;Compétence&nbsp;de&nbsp;circonstance&nbsp;</div>
+                        <div class="sheet-col-4">
+                            <select name="attr_circonstance-select">
+                                <option value="0">----------------</option>
+                                <option value="@{administrateur}">Administrateur</option>
+                                <option value="@{Artisan}">Artisan</option>
+                                <option value="@{artiste}">Artiste</option>
+                                <option value="@{Athlete}">Athlete</option>
+                                <option value="@{Bagarreur}">Bagarreur</option>
+                                <option value="@{Batelier}">Batelier</option>
+                                <option value="@{Bougeard}">Bougeard</option>
+                                <option value="@{Bricoleur}">Bricoleur</option>
+                                <option value="@{Citadin}">Citadin</option>
+                                <option value="@{Eclaireur}">Eclaireur</option>
+                                <option value="@{Erudit}">Erudit</option>
+                                <option value="@{Ferraileur}">Ferraileur</option>
+                                <option value="@{Gentilhomme}">Gentilhomme</option>
+                                <option value="@{Intriguant}">Intriguant</option>
+                                <option value="@{Larron}">Larron</option>
+                                <option value="@{Marchand}">Marchand</option>
+                                <option value="@{Medecin}">Medecin</option>
+                                <option value="@{Orateur}">Orateur</option>
+                                <option value="@{Paysan}">Paysan</option>
+                                <option value="@{Saltimbanque}">Saltimbanque</option>
+                                <option value="@{Soldat}">Soldat</option>
+                                <option value="@{Tireur}">Tireur</option>
+                                <option value="@{Veneur}">Veneur</option>
+                                <option value="@{Voyageur}">Voyageur</option>
+                                <option value="@{Porteur}">Porteur</option>
+                            </select>
+                        </div>
+                        <div class="sheet-col-2">
+                            <input type="number" name="attr_circonstance" class="sheet-noBorder" value="@{circonstance-select}" disabled>
+                        </div>
+                    </div>
+
+                    <div class="sheet-row">
+                        <div class="sheet-col-6">
+                            <div class="sheet-tableth sheet-row">
+                                <div class="sheet-col-6">Nombre d'actions:</div>
+                                <div class="sheet-col-4"><input type="text" value="ceil( (@{actions-aspect-score} + @{circonstance} ) /2)" name="attr_actions" disabled></div>
+                                <div class="sheet-col-2">&nbsp;&nbsp;(?)</div>
+                            </div>
+                            <div class="sheet-group">
+                                <div class="sheet-row">
+                                    <div class="sheet-col-6">Aspect (payé/passe):</div>
+                                    <div class="sheet-col-4"><input type="text" name="attr_actions-aspect" class="sheet-noBorder"></div>
+                                    <div class="sheet-col-2"><input type="text" name="attr_actions-aspect-score" class="sheet-noBorder"></div>
+                                </div>
+                                <div class="sheet-tableth sheet-row">
+                                    <div class="sheet-col-6">Initiative:</div>
+                                    <div class="sheet-col-4"><input type="text" name="attr_initiative" value="(@{initiative-aspect} + @{circonstance} )" disabled></div>
+                                    <div class="sheet-col-2">&nbsp;&nbsp;(?)</div>
+                                </div>
+                                <div class="sheet-row">
+                                    <div class="sheet-col-6">Aspect (gratuit/scéne):</div>
+                                    <div class="sheet-col-4"><input type="text" name="attr_initiative-aspect-name" class="sheet-noBorder"></div>
+                                    <div class="sheet-col-2"><input type="text" name="attr_initiative-aspect" class="sheet-noBorder"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sheet-col-6">
+                            <div class="sheet-tableth sheet-row">
+                                <div class="sheet-col-6">Rupture:</div>
+                                <div class="sheet-col-4"><input type="text" name="attr_rupture-total" value="(@{rupture-arme} + @{rupture-protection} + @{rupture-bonus} + 1 )" disabled></div>
+                                <div class="sheet-col-2">&nbsp;&nbsp;(?)</div>
+                            </div>
+                            <div class="sheet-group">
+                                <div class="sheet-row">
+                                    <div class="sheet-col-6">Arme-Dieu:</div>
+                                    <div class="sheet-col-4"><input type="text" name="attr_rupture-arme" class="sheet-noBorder" value="0"></div>
+                                    <div class="sheet-col-2">&nbsp;&nbsp;</div>
+                                </div>
+                                <div class="sheet-row">
+                                    <div class="sheet-col-6">Protection:</div>
+                                    <div class="sheet-col-4"><input type="text" name="attr_rupture-protection" class="sheet-noBorder" value="0"></div>
+                                    <div class="sheet-col-2">&nbsp;&nbsp;(?)</div>
+                                </div>
+                                <div class="sheet-row">
+                                    <div class="sheet-col-6">Pouvoir:</div>
+                                    <div class="sheet-col-4"><input type="text" name="attr_rupture-bonus" class="sheet-noBorder" value="0"></div>
+                                    <div class="sheet-col-2">&nbsp;&nbsp;(?)+1</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <input type="checkbox" name="attr_attack-bonus-check" value="2" />
+                    <input type="number" name="attr_attack-bonus-base" value="0">
+                    <input type="number" name="attr_attack-bonus-total" value="0" readonly>
+
+
+                </div>
+            </div>
+            <div class="sheet-routine">
+                <select name="attr_routine-select">
+                    <option value="0">----------------</option>
+                    <option value="@{administrateur}">Administrateur</option>
+                    <option value="@{artisan}">Artisan</option>
+                    <option value="@{artiste}">Artiste</option>
+                    <option value="@{Athlete}">Athlete</option>
+                    <option value="@{Bagarreur}">Bagarreur</option>
+                    <option value="@{Batelier}">Batelier</option>
+                    <option value="@{Bougeard}">Bougeard</option>
+                    <option value="@{Bricoleur}">Bricoleur</option>
+                    <option value="@{Citadin}">Citadin</option>
+                    <option value="@{Eclaireur}">Eclaireur</option>
+                    <option value="@{Erudit}">Erudit</option>
+                    <option value="@{Ferraileur}">Ferraileur</option>
+                    <option value="@{Gentilhomme}">Gentilhomme</option>
+                    <option value="@{Intriguant}">Intriguant</option>
+                    <option value="@{Larron}">Larron</option>
+                    <option value="@{Marchand}">Marchand</option>
+                    <option value="@{Medecin}">Medecin</option>
+                    <option value="@{Orateur}">Orateur</option>
+                    <option value="@{Paysan}">Paysan</option>
+                    <option value="@{Saltimbanque}">Saltimbanque</option>
+                    <option value="@{Soldat}">Soldat</option>
+                    <option value="@{Tireur}">Tireur</option>
+                    <option value="@{Veneur}">Veneur</option>
+                    <option value="@{Voyageur}">Voyageur</option>
+                    <option value="@{Porteur}">Porteur</option>
+                </select>
+            </div>
+
+
+
+            attaque
+            competence :
+            aspect gratuit
+            aspect payant
+            aspect payant
+            combat
+            menace >> information
+            bonus
+            <br />
+            Parade
+            competence :
+            aspect gratuit
+            aspect payant
+            aspect payant
+            rupture
+            bonus
+            <br />
+            jet
+            competence :
+            aspect gratuit
+            aspect payant
+            aspect payant
+            bonus
+            <img src="https://drive.google.com/file/d/1WMuOc5Tsj9XXrxV-_EridDGBerpDv1d9/view?usp=sharing" alt="DICE" />
+        </div>
+        <!-- TAB Incarnation -->
+        <div class="sheet-tab_compagnons">
+            <br />
+            <div class="sheet-Incarnation">
+                <h2 class="sheet-display">Incarnation</h2>
+                <div class="sheet-group">
+                    <div class="sheet-row">
+                        <div class="sheet-col-12">
+                            <div class="sheet-row">
+                                <div class="sheet-col-3">Nom&nbsp;:</div>
+                                <div class="sheet-col-9">
+                                    <input type="text" name="attr_Arme_Nom" class="sheet-noBorder">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sheet-row">
+                        <div class="sheet-col-4">
+                            <div class="sheet-row sheet-tableth">Capacité Divine</div>
+                            <div class="sheet-row">
+                                <div class="sheet-col-8">Puissance</div>
+                                <div class="sheet-col-4">
+                                    <input type="checkbox" name="attr_Puissance_arme_score_1" value="1" />
+                                    <input type="checkbox" name="attr_Puissance_arme_score_2" value="2" />
+                                    <input type="checkbox" name="attr_Puissance_arme_score_3" value="3" />
+                                    <input type="checkbox" name="attr_Puissance_arme_score_4" value="4" />
+                                    <input type="checkbox" name="attr_Puissance_arme_score_5" value="5" />
+                                </div>
+                            </div>
+                            <div class="sheet-row">
+                                <div class="sheet-col-4">Incarnation</div>
+                                <div class="sheet-col-8">
+                                    <input type="text" class="sheet-noBorder" name="attr_Incarnation_arme">
+                                </div>
+                            </div>
+                            <div class="sheet-row">
+                                <div class="sheet-col-8">FlashBack</div>
+                                <div class="sheet-col-3">
+                                    <input type="checkbox" name="attr_FlashBack_arme_score_1" value="1" />
+                                    <input type="checkbox" name="attr_FlashBack_arme_score_2" value="2" />
+                                    <input type="checkbox" name="attr_FlashBack_arme_score_3" value="3" />
+                                </div>
+                                <div class="sheet-col-1">
+                                    <input type="text" class="sheet-noBorder" name="attr_FlashBack_arme_exp">
+                                </div>
+                            </div>
+                            <div class="sheet-row">
+                                <div class="sheet-col-3">Expérience</div>
+                                <div class="sheet-col-3">
+                                    <input type="text" name="attr_Arme_Exp_current" class="sheet-noBorder">
+                                </div>
+                                <div class="sheet-col-3">/ Total </div>
+                                <div class="sheet-col-3">
+                                    <input type="text" name="attr_Arme_Exp_all" class="sheet-noBorder">
+                                </div>
+                            </div>
+                            <div class="sheet-row">
+                                <div class="sheet-col-4">Frustration</div>
+                                <div class="sheet-col-8">
+                                    <input type="text" class="sheet-noBorder" name="attr_Frustration_arme">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sheet-col-4">
+                            <div class="sheet-row sheet-tableth">Capacité Matérielle</div>
+                            <div class="sheet-row">
+                                <div class="sheet-col-4">Type</div>
+                                <div class="sheet-col-8">
+                                    <input type="text" class="sheet-noBorder" name="attr_Type_arme">
+                                </div>
+                            </div>
+                            <div class="sheet-row">
+                                <div class="sheet-col-4">Composition&nbsp;:</div>
+                                <div class="sheet-col-8">
+                                    <input type="text" class="sheet-noBorder" name="attr_Composition_arme">
+                                </div>
+                            </div>
+                            <div class="sheet-row">
+                                <div class="sheet-col-4">Menace</div>
+                                <div class="sheet-col-8">
+                                    <input type="text" class="sheet-noBorder" name="attr_Menace_arme">
+                                </div>
+                            </div>
+                            <div class="sheet-row">
+                                <div class="sheet-col-4">Couverture</div>
+                                <div class="sheet-col-8">
+                                    <input type="text" class="sheet-noBorder" name="attr_Couverture_arme">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sheet-col-4">
+                            <div class="sheet-row sheet-tableth">Bonus</div>
+                            <div class="sheet-row">
+                                <div class="sheet-col-6">Combat</div>
+                                <div class="sheet-col-5">
+                                    <input type="checkbox" name="attr_Combat_arme_score_1" value="1" />
+                                    <input type="checkbox" name="attr_Combat_arme_score_2" value="2" />
+                                    <input type="checkbox" name="attr_Combat_arme_score_3" value="3" />
+                                </div>
+                                <div class="sheet-col-1">
+                                    <input type="text" class="sheet-noBorder" name="attr_Combat_arme_exp">
+                                </div>
+                            </div>
+                            <div class="sheet-row">
+                                <div class="sheet-col-6">Rupture</div>
+                                <div class="sheet-col-5">
+                                    <input type="checkbox" name="attr_Rupture_arme_score_1" value="1" />
+                                    <input type="checkbox" name="attr_Rupture_arme_score_2" value="2" />
+                                    <input type="checkbox" name="attr_Rupture_arme_score_3" value="3" />
+                                    <input type="checkbox" name="attr_Rupture_arme_score_4" value="4" />
+                                    <input type="checkbox" name="attr_Rupture_arme_score_5" value="5" />
+                                </div>
+                                <div class="sheet-col-1">
+                                    <input type="text" class="sheet-noBorder" name="attr_Rupture_arme_exp">
+                                </div>
+                            </div>
+                            <div class="sheet-row sheet-tableth">Compétences</div>
+                            <div class="sheet-row">
+                                <div class="sheet-col-9">
+                                    <select name="attr_Comp1">
+                                        <option value="0">-----------------------</option>
+                                        <option>Administrateur</option>
+                                        <option>Artisan</option>
+                                        <option>Artisan</option>
+                                        <option>Artiste</option>
+                                        <option>Athlete</option>
+                                        <option>Bagarreur</option>
+                                        <option>Batelier</option>
+                                        <option>Bougeard</option>
+                                        <option>Bricoleur</option>
+                                        <option>Citadin</option>
+                                        <option>Eclaireur</option>
+                                        <option>Erudit</option>
+                                        <option>Ferraileur</option>
+                                        <option>Gentilhomme</option>
+                                        <option>Intriguant</option>
+                                        <option>Larron</option>
+                                        <option>Marchand</option>
+                                        <option>Medecin</option>
+                                        <option>Orateur</option>
+                                        <option>Paysan</option>
+                                        <option>Saltimbanque</option>
+                                        <option>Soldat</option>
+                                        <option>Tireur</option>
+                                        <option>Veneur</option>
+                                        <option>Voyageur</option>
+                                        <option>Porteur</option>
+                                    </select>
+                                </div>
+                                <div class="sheet-col-2">
+                                    <input type="checkbox" name="attr_Comp1_arme_score_1" value="1" />
+                                    <input type="checkbox" name="attr_Comp1_arme_score_2" value="2" />
+                                </div>
+                                <div class="sheet-col-1">
+                                    <input type="text" class="sheet-noBorder" name="attr_Comp1_arme_exp">
+                                </div>
+                            </div>
+                            <div class="sheet-row">
+                                <div class="sheet-col-9">
+                                    <select name="attr_Comp2">
+                                        <option>-----------------------</option>
+                                        <option>Administrateur</option>
+                                        <option>Artisan</option>
+                                        <option>Artisan</option>
+                                        <option>Artiste</option>
+                                        <option>Athlete</option>
+                                        <option>Bagarreur</option>
+                                        <option>Batelier</option>
+                                        <option>Bougeard</option>
+                                        <option>Bricoleur</option>
+                                        <option>Citadin</option>
+                                        <option>Eclaireur</option>
+                                        <option>Erudit</option>
+                                        <option>Ferraileur</option>
+                                        <option>Gentilhomme</option>
+                                        <option>Intriguant</option>
+                                        <option>Larron</option>
+                                        <option>Marchand</option>
+                                        <option>Medecin</option>
+                                        <option>Orateur</option>
+                                        <option>Paysan</option>
+                                        <option>Saltimbanque</option>
+                                        <option>Soldat</option>
+                                        <option>Tireur</option>
+                                        <option>Veneur</option>
+                                        <option>Voyageur</option>
+                                        <option>Porteur</option>
+                                    </select>
+                                </div>
+                                <div class="sheet-col-2">
+                                    <input type="checkbox" name="attr_Comp2_arme_score_1" value="1" />
+                                    <input type="checkbox" name="attr_Comp2_arme_score_2" value="2" />
+                                </div>
+                                <div class="sheet-col-1">
+                                    <input type="text" class="sheet-noBorder" name="attr_Comp2_arme_exp">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sheet-row">
+                <div class="sheet-col-6">
+                    <div class="sheet-tableth sheet-row">
+                        <div class="sheet-col-8">Motivations</div>
+                        <div class="sheet-col-4">Score</div>
+                    </div>
+                    <div class="sheet-group">
+                        <fieldset class="repeating_Motivations">
+                            <div class="sheet-row">
+                                <div class="sheet-col-9">
+                                    <input type="text" class="sheet-noBorder" name="attr_Motivations_Nom" value="" />
+                                </div>
+                                <div class="sheet-col-3">
+                                    <input type="checkbox" name="attr_Motivations_score_1" value="1" />
+                                    <input type="checkbox" name="attr_Motivations_score_2" value="2" />
+                                    <input type="checkbox" name="attr_Motivations_score_3" value="3" />
+                                    <input type="checkbox" name="attr_Motivations_score_4" value="4" />
+                                    <input type="checkbox" name="attr_Motivations_score_5" value="5" />
+                                </div>
+                            </div>
+                            <div class="sheet-row">
+                                <div class="sheet-col-12">
+                                    <input type="text" class="sheet-noBorder" name="attr_Motivations_detail" value="" />
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+                <div class="sheet-col-6">
+                    <div class="sheet-tableth sheet-row">
+                        <div class="sheet-col-4">Limitations</div>
+                        <div class="sheet-col-5">Score</div>
+                        <div class="sheet-col-3">Expérience</div>
+                    </div>
+                    <div class="sheet-group">
+                        <fieldset class="repeating_Limitations">
+                            <div class="sheet-row">
+                                <div class="sheet-col-4">
+                                    <input type="text" class="sheet-noBorder" name="attr_Limitations_arme_Nom" value="" />
+                                </div>
+                                <div class="sheet-col-2">
+                                    <input type="number" name="attr_Limitations_arme_score" value="0" />
+                                </div>
+                                <div class="sheet-col-4">
+                                    <input type="radio" name="attr_Limitations_puissance" class="sheet-rounded-tab" value="min" title="Mineur" /><span class="sheet-rounded-tab">Min</span>
+                                    <input type="radio" name="attr_Limitations_puissance" class="sheet-rounded-tab" value="maj" title="Majeur" /><span class="sheet-rounded-tab">Maj</span>
+                                    <input type="radio" name="attr_Limitations_puissance" class="sheet-rounded-tab" value="sup" title="Supérieur" /><span class="sheet-rounded-tab">Sup</span>
+                                </div>
+                                <div class="sheet-col-2">
+                                    <input type="number" class="sheet-noBorder" name="attr_Limitations_arme_exp" value="" />
+                                </div>
+                            </div>
+                            <div class="sheet-row">
+                                <div class="sheet-col-12">
+                                    <input type="text" class="sheet-noBorder" name="attr_Limitations_arme_detail" value="" />
+                                </div>
+                            </div>
+                        </fieldset>
+                        <div class="sheet-row">
+                            <div class="sheet-col-4">
+                                <input type="text" class="sheet-noBorder" name="attr_sangsue_name" value="Sangsue" disabled />
+                            </div>
+                            <div class="sheet-col-2">
+                                <input type="number" name="attr_sangsue" value="0" max="5" />
+                            </div>
+                            <div class="sheet-col-4">
+                                <input type="radio" name="attr_sangsue_puissance" class="sheet-rounded-tab" value="maj" title="Majeur" /><span class="sheet-rounded-tab">Maj</span>
+                            </div>
+                            <div class="sheet-col-2">
+                                <input type="number" class="sheet-noBorder" name="attr_sangsue_exp" value="0" />
+                            </div>
+                        </div>
+                        <div class="sheet-row">
+                            <div class="sheet-col-4">
+                                <input type="text" class="sheet-noBorder" value="Parasite" disabled />
+                            </div>
+                            <div class="sheet-col-2">
+                                <input type="number" name="attr_parasite" value="0" max="5" />
+                            </div>
+                            <div class="sheet-col-4">
+                                <input type="radio" name="attr_parasite_puissance" class="sheet-rounded-tab" value="sup" title="Supérieur" /><span class="sheet-rounded-tab">Sup</span>
+                            </div>
+                            <div class="sheet-col-2">
+                                <input type="number" class="sheet-noBorder" name="attr_parasite_exp" value="0" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sheet-row">
+                <div class="sheet-col-6">
+                    <div class="sheet-tableth sheet-row">
+                        <div class="sheet-col-12">Remords</div>
+                    </div>
+                    <div class="sheet-group">
+                        <fieldset class="repeating_Remords">
+                            <div class="sheet-row">
+                                <div class="sheet-col-9">
+                                    <input type="text" class="sheet-noBorder" name="attr_Remords_Nom" value="" />
+                                </div>
+                                <div class="sheet-col-3">
+                                    <input type="checkbox" name="attr_Remords_score_1" value="1" />
+                                    <input type="checkbox" name="attr_Remords_score_2" value="2" />
+                                    <input type="checkbox" name="attr_Remords_score_3" value="3" />
+                                    <input type="checkbox" name="attr_Remords_score_4" value="4" />
+                                    <input type="checkbox" name="attr_Remords_score_5" value="5" />
+                                </div>
+                            </div>
+                            <div class="sheet-row">
+                                <div class="sheet-col-12">
+                                    <input type="text" class="sheet-noBorder" name="attr_Remords_detail" value="" />
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <br clear="all" />
+                </div>
+                <div class="sheet-col-6">
+                    <div class="sheet-tableth sheet-row">
+                        <div class="sheet-col-12">Serment</div>
+                    </div>
+                    <div class="sheet-group">
+                        <fieldset class="repeating_Serment">
+                            <div class="sheet-row">
+                                <div class="sheet-col-12">
+                                    <input type="text" class="sheet-noBorder" name="attr_Serment_detail" value="" />
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <br clear="all" />
+                </div>
+            </div>
+            <div class="sheet-row">
+                <div class="sheet-col-9">
+                    <div class="sheet-tableth sheet-row">
+                        <div class="sheet-col-4">Aspect</div>
+                        <div class="sheet-col-5">Score</div>
+                        <div class="sheet-col-3">Expérience</div>
+                    </div>
+                    <div class="sheet-group">
+                        <fieldset class="repeating_aspectsarme">
+                            <div class="sheet-row">
+                                <div class="sheet-col-8">
+                                    <input type="text" class="sheet-noBorder" name="attr_aspects_arme_Nom" value="" />
+                                </div>
+                                <div class="sheet-col-3">
+                                    <input type="checkbox" name="attr_aspects_arme_score_1" value="1" />
+                                    <input type="checkbox" name="attr_aspects_arme_score_2" value="2" />
+                                    <input type="checkbox" name="attr_aspects_arme_score_3" value="3" />
+                                    <input type="checkbox" name="attr_aspects_arme_score_4" value="4" />
+                                    <input type="checkbox" name="attr_aspects_arme_score_5" value="5" />
+                                </div>
+                                <div class="sheet-col-1">
+                                    <input type="text" class="sheet-noBorder" name="attr_aspects_arme_Effet" value="" />
+                                </div>
+                            </div>
+                            <div class="sheet-row">
+                                <div class="sheet-col-12">
+                                    <input type="text" class="sheet-noBorder" name="attr_Aspects_arme_detail" value="" />
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <br clear="all" />
+                </div>
+                <div class="sheet-col-3">
+                    <div class="sheet-row">
+                        <div class="sheet-tableth sheet-row">
+                            <div class="sheet-col-12">Liste des Porteurs</div>
+                        </div>
+                        <div class="sheet-col-11">
+                            <div class="sheet-row">
+                                <fieldset class="repeating_Porteurs">
+                                    <div class="sheet-col-12">
+                                        <input type="text" class="sheet-noBorder" name="attr_line_Porteurs" value="" />
+                                    </div>
+                                </fieldset>
+                            </div>
+                            <br clear="all" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sheet-row">
+                <div class="sheet-col-12">
+                    <div class="sheet-row">
+                        <div class="sheet-col-12">
+                            <div class="sheet-tableth sheet-row">
+                                <div class="sheet-col-12">Histoires</div>
+                            </div>
+                            <div class="sheet-row">
+                                <fieldset class="repeating_Histoires">
+                                    <div class="sheet-col-12">
+                                        <input type="text" class="sheet-noBorder" name="attr_line_histoires" value="" />
+                                    </div>
+                                </fieldset>
+                            </div>
+                            <br clear="all" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB Inventaire -->
+        <div class="sheet-tab_inventaire">
+
+            <div class="sheet-armes">
+                <h2>Armement</h2>
+                <div class="sheet-tableth sheet-row">
+                    <div class="sheet-col-6">Arme</div>
+                    <div class="sheet-col-4">Aspects</div>
+                    <div class="sheet-col-2">Score</div>
+                </div>
+                <fieldset class="repeating_armes">
+                    <div class="sheet-row">
+                        <div class="sheet-col-6">
+                            <div class="sheet-group">
+                                <div class="sheet-row">
+                                    <div class="sheet-col-4">Nom</div>
+                                    <div class="sheet-col-8">
+                                        <input type="text" class="sheet-noBorder" name="attr_arme-Nom" value="" />
+                                    </div>
+                                </div>
+                                <div class="sheet-row">
+                                    <div class="sheet-col-4">Menace</div>
+                                    <div class="sheet-col-8">
+                                        <input type="text" class="sheet-noBorder" name="attr_arme-Menace" value="" />
+                                    </div>
+                                </div>
+                                <div class="sheet-row">
+                                    <div class="sheet-col-4">Couverture</div>
+                                    <div class="sheet-col-8">
+                                        <input type="text" class="sheet-noBorder" name="attr_arme-couverture" value="" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sheet-col-6">
+                            <div class="sheet-row">
+                                <div class="sheet-col-10">
+                                    <input type="text" class="sheet-noBorder" name="attr_armes-aspects-noma" value="" />
+                                </div>
+                                <div class="sheet-col-2">
+                                    <input type="text" class="sheet-noBorder" name="attr_armes-aspects-scorea" value="" />
+                                </div>
+
+                            </div>
+                            <div class="sheet-row">
+                                <div class="sheet-col-10">
+                                    <input type="text" class="sheet-noBorder" name="attr_armes-aspects-nomb" value="" />
+                                </div>
+                                <div class="sheet-col-2">
+                                    <input type="text" class="sheet-noBorder" name="attr_armes-aspects-scoreb" value="" />
+                                </div>
+                            </div>
+                            <div class="sheet-row">
+                                <div class="sheet-col-10">
+                                    <input type="text" class="sheet-noBorder" name="attr_armes-aspects-nomc" value="" />
+                                </div>
+                                <div class="sheet-col-2">
+                                    <input type="text" class="sheet-noBorder" name="attr_armes-aspects-scorec" value="" />
+                                </div>
+                            </div>
+                            <div class="sheet-row">
+                                <div class="sheet-col-10">
+                                    <input type="text" class="sheet-noBorder" name="attr_armes-aspects-nomd" value="" />
+                                </div>
+                                <div class="sheet-col-2">
+                                    <input type="text" class="sheet-noBorder" name="attr_armes-aspects-scored" value="" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <br />
+            <div class="sheet-armure">
+                <h2>Protections</h2>
+
+                <div class="sheet-tableth sheet-row">
+                    <div class="sheet-col-5">Pièce d'Armure</div>
+                    <div class="sheet-col-1">Protection</div>
+                    <div class="sheet-col-1">Solidité</div>
+                    <div class="sheet-col-5">Aspects</div>
+                </div>
+                <fieldset class="repeating_armures">
+                    <div class="sheet-group">
+                        <div class="sheet-row">
+                            <div class="sheet-col-5">
+                                <input type="text" class="sheet-noBorder" name="attr_Armure_Nom" value="" />
+                            </div>
+                            <div class="sheet-col-1">
+                                <input type="number" name="attr_Armure_Protection" value="0" />
+                            </div>
+                            <div class="sheet-col-1">
+                                <input type="number" name="attr_Armure_Solidite" value="0" />
+                            </div>
+                            <div class="sheet-col-5">
+                                <input type="text" class="sheet-noBorder" name="attr_Armure_Aspects" value="" />
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+                <br clear="all" />
+                <br />
+            </div>
+
+            <div class="sheet-row">
+
+                <div class="sheet-col-12">
+                    <input type="radio" class="sheet-tab sheet-tab_materiel" name="attr_tab_inventaire" value="Matériel" checked="checked" /><span class="sheet-tab">Matériel</span>
+                    <input type="radio" class="sheet-tab sheet-tab_butin" name="attr_tab_inventaire" value="Butins" /><span class="sheet-tab">Butins</span>
+                    <input type="radio" class="sheet-tab sheet-tab_conso" name="attr_tab_inventaire" value="Potions" title="Potions / Poisons / Antidotes" /><span class="sheet-tab">Epices</span>
+                    <input type="radio" class="sheet-tab sheet-tab_tout" name="attr_tab_inventaire" value="Tout" title="Tout afficher" /><span class="sheet-tab">Tout afficher</span>
+
+                    <br clear="all" />
+                    <br />
+                    <div class="sheet-tab_materiel">
+                        <div class="sheet-row">
+                            <div class="sheet-col-1 sheet-center">
+                                <img src="https://i49.servimg.com/u/f49/19/87/23/15/materi10.png" width="34" height="34" />
+                            </div>
+                            <div class="sheet-col-11">
+                                <div class="sheet-tableth sheet-row">
+                                    <div class="sheet-col-5">Matériel</div>
+                                    <div class="sheet-col-1">Poids</div>
+                                    <div class="sheet-col-5"></div>
+                                    <div class="sheet-col-1">Poids</div>
+                                </div>
+                                <div class="sheet-row">
+                                    <fieldset class="repeating_materiels">
+                                        <div class="sheet-col-10">
+                                            <input type="text" class="sheet-noBorder" name="attr_Materiel_Nom" value="" />
+                                        </div>
+                                        <div class="sheet-col-2">
+                                            <input type="number" name="attr_Materiel_Poids" value="0.1" step="0.1" />
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                    </div>
+                    <div class="sheet-tab_butin">
+                        <div class="sheet-row">
+                            <div class="sheet-col-1 sheet-center">
+                                <img src="https://i49.servimg.com/u/f49/19/87/23/15/butin10.png" width="34" height="34" />
+                            </div>
+                            <div class="sheet-col-11">
+                                <div class="sheet-tableth sheet-row">
+                                    <div class="sheet-col-3">Butins</div>
+                                    <div class="sheet-col-1">Monnaie</div>
+                                    <div class="sheet-col-2">Valeur (ceste)</div>
+                                    <div class="sheet-col-3"></div>
+                                    <div class="sheet-col-1">Monnaie</div>
+                                    <div class="sheet-col-2">Valeur</div>
+                                </div>
+                                <div class="sheet-row">
+                                    <fieldset class="repeating_butins">
+                                        <div class="sheet-col-5">
+                                            <input type="number" class="sheet-noBorder" name="attr_Butin_Nombre" value="1" step="1" />
+                                        </div>
+                                        <div class="sheet-col-4">
+                                            <select name="attr_monnaie-select">
+                                                <option value="1">Pieste</option>
+                                                <option value="10" selected>Ceste</option>
+                                                <option value="100">Medaille</option>
+                                                <option value="250">Varine</option>
+                                                <option value="1000">Ecussin</option>
+                                            </select>
+                                        </div>
+                                        <div class="sheet-col-3">
+                                            <input type="text" value="(@{monnaie-select} * @{Butin_Nombre} ) /10" name="attr_Butin_Prix" disabled>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                    </div>
+                    <div class="sheet-tab_conso">
+                        <div class="sheet-row">
+                            <div class="sheet-col-1 sheet-center">
+                                <img src="https://i49.servimg.com/u/f49/19/87/23/15/potion10.png" width="34" height="34" />
+                            </div>
+                            <div class="sheet-col-11">
+                                <div class="sheet-tableth sheet-row">
+                                    <div class="sheet-col-5">Potions</div>
+                                    <div class="sheet-col-1">Doses</div>
+                                    <div class="sheet-col-6">Effets</div>
+                                </div>
+                                <fieldset class="repeating_potions">
+                                    <div class="sheet-row">
+                                        <div class="sheet-col-5">
+                                            <input type="text" class="sheet-noBorder" name="attr_Conso_Nom" value="" />
+                                        </div>
+                                        <div class="sheet-col-1">
+                                            <input type="number" name="attr_Conso_Count" value="0" />
+                                        </div>
+                                        <div class="sheet-col-6">
+                                            <input type="text" class="sheet-noBorder" name="attr_Conso_Effet" value="" />
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+
+                        <br />
+                        <div class="sheet-row">
+                            <div class="sheet-col-1 sheet-center">
+                                <img src="https://i49.servimg.com/u/f49/19/87/23/15/poison10.png" width="34" height="34" />
+                            </div>
+                            <div class="sheet-col-11">
+                                <div class="sheet-tableth sheet-row">
+                                    <div class="sheet-col-5">Poisons</div>
+                                    <div class="sheet-col-1">Doses</div>
+                                    <div class="sheet-col-6">Effets</div>
+                                </div>
+                                <fieldset class="repeating_poisons">
+                                    <div class="sheet-row">
+                                        <div class="sheet-col-5">
+                                            <input type="text" class="sheet-noBorder" name="attr_Conso_Nom" value="" />
+                                        </div>
+                                        <div class="sheet-col-1">
+                                            <input type="number" name="attr_Conso_Count" value="0" />
+                                        </div>
+                                        <div class="sheet-col-6">
+                                            <input type="text" class="sheet-noBorder" name="attr_Conso_Effet" value="" />
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+
+                        <br />
+                        <div class="sheet-row">
+                            <div class="sheet-col-1 sheet-center">
+                                <img src="https://i49.servimg.com/u/f49/19/87/23/15/antido10.png" width="34" height="34" />
+                            </div>
+                            <div class="sheet-col-11">
+                                <div class="sheet-tableth sheet-row">
+                                    <div class="sheet-col-5">Antidotes</div>
+                                    <div class="sheet-col-1">Doses</div>
+                                    <div class="sheet-col-6">Effets</div>
+                                </div>
+                                <fieldset class="repeating_antidotes">
+                                    <div class="sheet-row">
+                                        <div class="sheet-col-5">
+                                            <input type="text" class="sheet-noBorder" name="attr_Conso_Nom" value="" />
+                                        </div>
+                                        <div class="sheet-col-1">
+                                            <input type="number" name="attr_Conso_Count" value="0" />
+                                        </div>
+                                        <div class="sheet-col-6">
+                                            <input type="text" class="sheet-noBorder" name="attr_Conso_Effet" value="" />
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <br />
+                    </div>
+                    <br />
+                </div>
+            </div>
+
+            <br clear="all" />
+            <br />
+            <div class="sheet-monture_materiel">
+                <h2>Matériel</h2>
+                <div class="sheet-row">
+                    <div class="sheet-col-4">
+                        <input type="text" class="sheet-noBorder" name="attr_Compagnon_Materiel1_Nom" value="Sac N°1">
+                        <textarea name="attr_Compagnon_Materiel1"></textarea>
+                    </div>
+                    <div class="sheet-col-4">
+                        <input type="text" class="sheet-noBorder" name="attr_Compagnon_Materiel2_Nom" value="Sac N°2">
+                        <textarea name="attr_Compagnon_Materiel2"></textarea>
+                    </div>
+                    <div class="sheet-col-4">
+                        <input type="text" class="sheet-noBorder" name="attr_Compagnon_Materiel3_Nom" value="Sac N°3">
+                        <textarea name="attr_Compagnon_Materiel3"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- TAB Magie -->
+        <div class="sheet-tab_magie">
+            <div class="sheet-row">
+                <div class="sheet-col-12">
+                    <h2>Porteur + Pouvoir + Puissance Arme = score lancement pouvoir</h2>
+                    <fieldset class="repeating_pouvoirs">
+                        <div class="sheet-tableth sheet-row">
+                            <div class="sheet-col-4">Pouvoir</div>
+                            <div class="sheet-col-5">Score</div>
+                            <div class="sheet-col-3">Expérience</div>
+                        </div>
+                        <div class="sheet-group">
+                            <div class="sheet-row">
+                                <div class="sheet-col-1">
+                                    <button type="roll" name="roll_AT"
+                                        value="@{displayJet} &{template:atk} {{name=Attaque de @{Personnage_Nom} avec @{Arme_Nom} }} {{at=@{Arme_TotalAT} }} {{notes=@{Arme_Note} }} {{effets= @{Arme_Effet} }} {{portee= @{arme_portee} }} {{display_effets= [[@{arme_Effet_display}]] }} {{display_notes= [[@{Arme_Note_display}]] }} {{btn_fumble= [Fumble](~@{character_name}|confirmation_fumble_atk) }}  {{btn_degats=[Dégats](~repeating_armes_Degats)}}">
+                                        Cast </button>
+                                </div>
+                                <div class="sheet-col-4">
+                                    <input type="text" class="sheet-noBorder" name="attr_pouvoirs_Nom" value="" />
+                                </div>
+                                <div class="sheet-col-2">
+                                    <input type="checkbox" name="attr_pouvoirs_score_1" value="1" />
+                                    <input type="checkbox" name="attr_pouvoirs_score_2" value="2" />
+                                    <input type="checkbox" name="attr_pouvoirs_score_3" value="3" />
+                                    <input type="checkbox" name="attr_pouvoirs_score_4" value="4" />
+                                    <input type="checkbox" name="attr_pouvoirs_score_5" value="5" />
+                                </div>
+                                <div class="sheet-col-1">
+                                    <input type="text" class="sheet-noBorder" name="attr_pouvoirsScore-9" value="1" />
+                                </div>
+                                <div class="sheet-col-3">
+                                    <div class="dots">
+                                        <input type="hidden" name="attr_pouvoirsScore-9" class="dot" value="1" />
+                                        <button type="action" name="act_pouvoirsScoreScore-9_1" class="dot"><span class="checked"></span></button>
+                                        <button type="action" name="act_pouvoirsScoreScore-9_2" class="dot gt-1"><span class="checked"></span></button>
+                                        <button type="action" name="act_pouvoirsScoreScore-9_3" class="dot gt-1 gt-2"><span class="checked"></span></button>
+                                        <button type="action" name="act_pouvoirsScoreScore-9_4" class="dot gt-1 gt-2 gt-3"><span class="checked"></span></button>
+                                        <button type="action" name="act_pouvoirsScoreScore-9_5" class="dot gt-1 gt-2 gt-3 gt-4"><span class="checked"></span></button>
+                                    </div>
+                                </div>
+                                <div class="sheet-col-2">
+                                    <input type="radio" name="attr_pouvoirs_puissance" class="sheet-rounded-tab" value="min" title="Mineur" /><span class="sheet-rounded-tab">Min</span>
+                                    <input type="radio" name="attr_pouvoirs_puissance" class="sheet-rounded-tab" value="maj" title="Majeur" /><span class="sheet-rounded-tab">Maj</span>
+                                    <input type="radio" name="attr_pouvoirs_puissance" class="sheet-rounded-tab" value="sup" title="Supérieur" /><span class="sheet-rounded-tab">Sup</span>
+                                </div>
+                                <div class="sheet-col-1">
+                                    <input type="text" class="sheet-noBorder" name="attr_pouvoirs_Exp" value="" />
+                                </div>
+                            </div>
+                            <div class="sheet-row">
+                                <div class="sheet-col-1">Type</div>
+                                <div class="sheet-col-3">
+                                    <input type="text" class="sheet-noBorder" name="attr_pouvoirs_Type" value="" />
+                                </div>
+                                <div class="sheet-col-1">Action</div>
+                                <div class="sheet-col-3">
+                                    <input type="text" class="sheet-noBorder" name="attr_pouvoirs_Action" value="" />
+                                </div>
+                                <div class="sheet-col-1">Fréquence</div>
+                                <div class="sheet-col-3">
+                                    <input type="text" class="sheet-noBorder" name="attr_pouvoirs_Frequence" value="" />
+                                </div>
+                            </div>
+                            <div class="sheet-row">
+                                <div class="sheet-col-1">Condition</div>
+                                <div class="sheet-col-8">
+                                    <input type="text" class="sheet-noBorder" name="attr_pouvoirs_condition_name" value="" />
+                                </div>
+                                <div class="sheet-col-2">
+                                    <input type="checkbox" name="attr_pouvoirs_condition_score_1" value="1" />
+                                    <input type="checkbox" name="attr_pouvoirs_condition_score_2" value="2" />
+                                    <input type="checkbox" name="attr_pouvoirs_condition_score_3" value="3" />
+                                    <input type="checkbox" name="attr_pouvoirs_condition_score_4" value="4" />
+                                </div>
+                                <div class="sheet-col-1">
+                                    <input type="text" class="sheet-noBorder" name="attr_pouvoirs_condition" value="" />
+                                </div>
+                            </div>
+                            <div class="sheet-row">
+                                <div class="sheet-col-12">
+                                    <textarea name="attr_pouvoirs_detail"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+        <!-- TAB Notes -->
+        <div class="sheet-tab_craft">
+            <div class="sheet-row">
+                <div class="sheet-col-12">
+                    <div class="sheet-row">
+                        <div class="sheet-col-11">
+                            <div class="sheet-row">
+                                <fieldset class="repeating_notes">
+                                    <div class="sheet-col-12">
+                                        <input type="text" class="sheet-noBorder" name="attr_line_notes" value="" />
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <textarea name="attr_history">to complete with tavern name :)</textarea>
+                </div>
+                <br />
+            </div>
+        </div>
+        <br clear="all" />
+    </div>
+
+
+    <!-- TAB Reglages -->
+    <div class="sheet-body sheet-reglages">
+        <h2>Réglages (v2.9) <input type="checkbox" name="attr_modal_patchNote" class="sheet-modal" value="1" title="Notes de mise à jour"><span class="sheet-cog" title="Notes de mise à jour">?</span>
+        </h2>
+        <!-- Patch note -->
+        <input type="checkbox" class="sheet-hidden sheet-modal" name="attr_modal_patchNote" value="1" />
+        <div class="sheet-modal-wrapper">
+            <div class="sheet-modal">
+                <div class="sheet-modal_header">
+                    <h2>Notes de mise à jour <span class="sheet-close">*</span><input type="checkbox" class="sheet-modal" name="attr_modal_patchNote" value="1"></h2>
+                </div>
+                <div class="sheet-modal_body">
+                    <b>v2.9</b><br>
+                    <ul>
+                        <li>Rajout des jets de <b>COU,INT,CHA</b> pour les Coups Spéciaux</li>
+                        <li>Permet de noter les Traits Particulier avec du texte plutôt que le tableau de cases</li>
+                        <li>Rajout du <b>bonus d'équipement aux dégâts</b> pour les attaques physiques</li>
+                        <li>Tous les boutons peuvent êtres Drag&Drop dans la barre de macro</li>
+                        <li>Passe la Confrontation sur 1d6 par défaut</li>
+                        <li>Corrections mineures</li>
+                        <li>Mise à jour graphique mineure</li>
+                    </ul>
+                    <b>v2.8.2</b><br>
+                    <ul>
+                        <li>Rajout des <b>Notes de mise à jour</b> dans les Réglages&nbsp;<span class="sheet-pictos">y</span></li>
+                        <li>Rajout du score de <b>PR max</b> dans l'Equipement</li>
+                        <li>Rajout du <b>bonus / malus temporaire de PR</b> dans les Traits particuliers</li>
+                        <li>Corrections mineures</li>
+                        <li>Mise à jour graphique mineure</li>
+                    </ul>
+                    <b>v2.8.1</b><br>
+                    <ul>
+                        <li>Corrections mineures</li>
+                    </ul>
+                    <b>v2.8</b><br>
+                    <ul>
+                        <li>Rajout du <b>Mode nuit</b> dans les Réglages&nbsp;<span class="sheet-pictos">y</span></li>
+                        <li>Intégration & support d'imports via copié-collé depuis le <b>compendium</b>
+                            bit.ly/ddn20&nbsp;<span class="sheet-pictos">x</span></li>
+                        <li>Rajout des <b>Armes à poudres</b></li>
+                        <li>Mise à jour graphique de l'<b>Inventaire</b></li>
+                        <li>Mise à jour mineure de la <b>Magie</b></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="sheet-row">
+            <div class="sheet-col-6">
+                <p>
+                    <input type="checkbox" name="attr_nightMode" value="1" class="sheet-col-1"> Mode nuit
+                </p>
+            </div>
+            <div class="sheet-col-6">
+            </div>
+        </div>
+        <div class="sheet-row">
+            <div class="sheet-col-6">
+                <p>
+                    <input type="checkbox" name="attr_displayJet" value="/w gm" class="sheet-col-1"> Envoyer les jets au
+                    MJ uniquement
+                    <br />
+                    <span class="sheet-hint">Cochez cette option pour que tous les jets soient cachés aux autres
+                        joueurs.</span>
+                </p>
+            </div>
+            <div class="sheet-col-6">
+                <p>
+                    <input type="checkbox" name="attr_displayCritEffets" value="1" class="sheet-col-1" checked> Afficher
+                    les effets des Critiques / Fumbles
+                    <br />
+                    <span class="sheet-hint">Cochez cette option pour que les effets des Critiques / Fumbles soient
+                        affichés en plus de la confirmation.</span>
+                </p>
+            </div>
+        </div>
+        <br />
+        <div class="sheet-row">
+            <div class="sheet-col-6">
+                <h2>Sauvegarder</h2>
+                <textarea name="attr_json_export"></textarea>
+                <span class="sheet-hint">Sauvegarder son personnage Roll20 pour l'importer dans une autre partie</span>
+                <div class="sheet-center">
+                    <input type="checkbox" class="sheet-tab" name="attr_export_start" value="1"><span class="sheet-tab">Démarrer</span>
+                </div>
+            </div>
+            <div class="sheet-col-6">
+                <h2>Importer</h2>
+                <textarea name="attr_json_import"></textarea>
+                <span class="sheet-hint"><span style="color:#F00;">Attention</span>, toutes les données de la fiche
+                    seront écrasées</span>
+                <div class="sheet-center">
+                    <input type="checkbox" class="sheet-tab" name="attr_import_start" value="1"><span class="sheet-tab">Démarrer</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--- SHEET PNJ -->
+    <div class="sheet-body sheet-pnj">
+        <h2>Caractéristiques</h2>
+        <div class="sheet-row sheet-tableth">
+            <div class="sheet-col-1"><button type="roll"
+                    value="@{displayJet} &{template:default} {{name=@{Personnage_Nom} tente une épreuve de Courage }} {{ Courage=@{Stats_Courage} }} {{ Résultat=[[1d20cs<1cf>20]] }}">
+                    COU</button></div>
+            <div class="sheet-col-1"><button type="roll"
+                    value="@{displayJet} &{template:default} {{name=@{Personnage_Nom} tente une épreuve d'Intelligence }} {{ Intelligence=@{Stats_Intelligence} }} {{ Résultat=[[1d20cs<1cf>20]] }}">
+                    INT</button></div>
+            <div class="sheet-col-1"><button type="roll"
+                    value="@{displayJet} &{template:default} {{name=@{Personnage_Nom} tente une épreuve de Charisme}} {{ Charisme=@{Stats_Charisme} }} {{ Résultat=[[1d20cs<1cf>20]] }}">
+                    CHA</button></div>
+            <div class="sheet-col-1"><button type="roll"
+                    value="@{displayJet} &{template:default} {{name=@{Personnage_Nom} tente une épreuve d'Adresse}} {{ Adresse=@{Stats_Adresse} }} {{ Résultat=[[1d20cs<1cf>20]] }}">
+                    AD</button></div>
+            <div class="sheet-col-1"><button type="roll"
+                    value="@{displayJet} &{template:default} {{name=@{Personnage_Nom} tente une épreuve de Force}} {{ Force=@{Stats_Force} }} {{ Résultat=[[1d20cs<1cf>20]] }}">
+                    FO</button></div>
+            <div class="sheet-col-1"><button type="roll"
+                    value="@{displayJet} &{template:default} {{name=@{Personnage_Nom} tente une Attaque }} {{ Attaque=@{Stats_Attaque} }} {{ Résultat=[[1d20cs<1cf>20]] }}">
+                    AT</button></div>
+            <div class="sheet-col-1"><button type="roll"
+                    value="@{displayJet} &{template:default} {{name=@{Personnage_Nom} tente une Parade }} {{ Parade=@{Stats_Parade} }} {{ Résultat=[[1d20cs<1cf>20]] }}">
+                    PRD</button></div>
+            <div class="sheet-col-1"><button type="roll"
+                    value="@{displayJet} &{template:default} {{name=@{Personnage_Nom} tente une Attaque à distance }} {{ Jet=@{Stats_Jet} }} {{ Résultat=[[1d20cs<1cf>20]] }}">
+                    JET</button></div>
+            <div class="sheet-col-1"><button type="roll"
+                    value="@{displayJet} &{template:default} {{name=@{Personnage_Nom} tente une Esquive }} {{ Esquive=@{Stats_Esquive} }} {{ Résultat=[[1d20cs<1cf>20]] }}">
+                    ESQ</button></div>
+            <div class="sheet-col-1"><button type="roll"
+                    value="@{displayJet} &{template:default} {{name=@{Personnage_Nom} concentre sa Magie}} {{ Magie&nbsp;Phys=@{Stats_MagiePhy} }} {{ Résultat=[[1d20cs<1cf>20]] }} ">
+                    MPhy</button></div>
+            <div class="sheet-col-1"><button type="roll"
+                    value="@{displayJet} &{template:default} {{name=@{Personnage_Nom} concentre sa Magie}} {{ Magie&nbsp;Psy=@{Stats_MagiePsy} }} {{ Résultat=[[1d20cs<1cf>20]] }}">
+                    MPsy</button></div>
+            <div class="sheet-col-1"><button type="roll"
+                    value="@{displayJet} &{template:default} {{name=@{Personnage_Nom} tente de résiter à la Magie}} {{ Résist.&nbsp;Magie=@{Stats_ResiMagie} }} {{ Résultat=[[1d20cs<1cf>20]] }} ">
+                    RM</button></div>
+        </div>
+        <div class="sheet-row">
+            <div class="sheet-col-1"><input type="number" name="attr_Stats_Courage" value="0"></div>
+            <div class="sheet-col-1"><input type="number" name="attr_Stats_Intelligence" value="0"></div>
+            <div class="sheet-col-1"><input type="number" name="attr_Stats_Charisme" value="0"></div>
+            <div class="sheet-col-1"><input type="number" name="attr_Stats_Adresse" value="0"></div>
+            <div class="sheet-col-1"><input type="number" name="attr_Stats_Force" value="0"></div>
+            <div class="sheet-col-1"><input type="number" name="attr_Stats_Attaque" value="8"></div>
+            <div class="sheet-col-1"><input type="number" name="attr_Stats_Parade" value="10"></div>
+            <div class="sheet-col-1"><input type="number" name="attr_Stats_Jet" value="0"></div>
+            <div class="sheet-col-1"><input type="number" name="attr_Stats_Esquive" value="0"></div>
+            <div class="sheet-col-1"><input type="number" name="attr_Stats_MagiePhy" value="0"></div>
+            <div class="sheet-col-1"><input type="number" name="attr_Stats_MagiePsy" value="0"></div>
+            <div class="sheet-col-1"><input type="number" name="attr_Stats_ResiMagie" value="0"></div>
+        </div>
+        <br />
+        <div class="sheet-row sheet-energie">
+            <div class="sheet-col-2">
+                <h2 class="sheet-ev-bar">Energie Vitale :</h2>
+                <div class="sheet-row">
+                    <div class="sheet-col-6">
+                        <input type="number" name="attr_EV" value="0" step="1">
+                    </div>
+                    <div class="sheet-col-6">
+                        <input type="number" name="attr_EV_max" value="0" min="1" step="1">
+                    </div>
+                </div>
+            </div>
+            <div class="sheet-col-2">
+                <h2 class="sheet-ea-bar">Energie Astrale :</h2>
+                <div class="sheet-row">
+                    <div class="sheet-col-6">
+                        <input type="number" name="attr_EA" value="0" step="1">
+                    </div>
+                    <div class="sheet-col-6">
+                        <input type="number" name="attr_EA_max" value="0" min="0" step="1">
+                    </div>
+                </div>
+            </div>
+            <div class="sheet-col-1">
+                <h2>Niveau</h2>
+                <div class="sheet-row">
+                    <div class="sheet-col-12"><input type="number" name="attr_Personnage_Niveau" value="0" step="1">
+                    </div>
+                </div>
+            </div>
+            <div class="sheet-col-1">
+                <h2>XP</h2>
+                <div class="sheet-row">
+                    <div class="sheet-col-12"><input type="number" name="attr_Personnage_XP" value="0" step="1"></div>
+                </div>
+            </div>
+            <div class="sheet-col-4"></div>
+            <div class="sheet-col-2">
+                <input type="checkbox" name="attr_modal_PNJ" class="sheet-modal" value="1" /><span class="sheet-cog">?</span> <span class="sheet-hint"> Macros utiles</span>
+                <div class="sheet-modal-wrapper">
+                    <div class="sheet-modal">
+                        <div class="sheet-modal_header">
+                            <h2>Macros globales pour PNJ <span class="sheet-close">*</span><input type="checkbox" class="sheet-modal" name="attr_modal_PNJ" value="1" /></h2>
+                        </div>
+                        <div class="sheet-modal_body">
+                            Il est possible d'ajouter ces macros en tant que "Token action" (Action de Pion) pour
+                            fluidifier les combats.<br /><br />
+                            <b>Rajouter le PNJ dans le Turn Order :</b><br />
+                            <textarea class="sheet-code" rows="1">[[@{selected|Stats_Courage} &{tracker}]] </textarea>
+                            <b>Faire attaquer le PNJ avec son Arme N°1 :</b><br />
+                            <textarea class="sheet-code"
+                                rows="1">@{selected|displayJet} &{template:default} {{name=Attaque de @{selected|Personnage_Nom} avec @{selected|repeating_PNJarmes_$0_Arme_Nom} }} {{ Cible = @{target|Personnage_Nom} }} {{ AT=@{selected|repeating_PNJarmes_$0_Arme_Jet} }} {{ Résultat=[[1d20cs<1cf>20]] }}</textarea>
+                            <b>Faire parer le PNJ avec son Arme N°1 :</b><br />
+                            <textarea class="sheet-code"
+                                rows="1">@{selected|displayJet} &{template:default} {{name=Parade de @{selected|Personnage_Nom} avec @{selected|repeating_PNJarmes_$0_Arme_Nom} }} {{ PRD=@{selected|Stats_Parade_total} + @{selected|repeating_PNJarmes_$0_Arme_PRD} }} {{ Résultat=[[1d20cs<1cf>20]] }}</textarea>
+                            <b>Dégats de l'Arme N°1 :</b><br />
+                            <textarea class="sheet-code"
+                                rows="1">@{selected|displayJet} &{template:default} {{name=Dégats de @{selected|Personnage_Nom} avec @{selected|repeating_PNJarmes_$0_Arme_Nom}}} {{ Cible = @{target|Personnage_Nom} }} {{ Dégats=[[@{selected|repeating_PNJarmes_$0_Arme_Degats} + @{selected|BonusDegatsForce}]] }}</textarea>
+                            <span class="sheet-hint">Pour utiliser l'arme N°2, remplacer $0 par $1 et ainsi de
+                                suite.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="sheet-armes">
+            <h2>Armement & Baston</h2>
+            <div class="sheet-tableth sheet-row">
+                <div class="sheet-col-4">Arme</div>
+                <div class="sheet-col-1">Portée</div>
+                <div class="sheet-col-1">AT</div>
+                <div class="sheet-col-1">PRD</div>
+                <div class="sheet-col-1">Dégats</div>
+                <div class="sheet-col-1">RUP.</div>
+                <div class="sheet-col-3">Jets</div>
+            </div>
+
+            <fieldset class="repeating_PNJarmes">
+                <div class="sheet-row">
+                    <div class="sheet-col-4">
+                        <input type="text" class="sheet-noBorder" name="attr_Arme_Nom" value="" />
+                    </div>
+                    <div class="sheet-col-1">
+                        <select name="attr_Arme_Jet">
+                            <option value="[[ @{Stats_Attaque_total} + @{Arme_AT} ]]" selected="selected">Mélée</option>
+                            <option value="[[ @{Stats_Jet_total} + @{Arme_AT} ]]">Dist.</option>
+                        </select>
+                    </div>
+                    <div class="sheet-col-1">
+                        <input type="number" name="attr_Arme_AT" value="0" />
+                    </div>
+                    <div class="sheet-col-1">
+                        <input type="number" name="attr_Arme_PRD" value="0" />
+                    </div>
+                    <div class="sheet-col-1">
+                        <input type="text" name="attr_Arme_Degats" value="1d6" />
+                    </div>
+                    <div class="sheet-col-1">
+                        <input type="text" name="attr_Arme_RUP" value="" />
+                    </div>
+                    <div class="sheet-col-3">
+                        <button type="roll" value="@{displayJet} &{template:default} {{name=Attaque de @{Personnage_Nom} avec @{Arme_Nom} }} {{ AT=@{Arme_Jet} }} {{ Résultat=[[1d20cs<1cf>20]] }}">
+                            AT </button>
+                        <button type="roll"
+                            value="@{displayJet} &{template:default} {{name=Parade de @{Personnage_Nom} avec @{Arme_Nom} }} {{ PRD=[[@{Stats_Parade_total} + @{Arme_PRD}]] }} {{ Résultat=[[1d20cs<1cf>20]] }}">
+                            PRD </button>
+                        <button type="roll" class="sheet-rollDegats"
+                            value="@{displayJet} &{template:default} {{name=Dégats de @{Personnage_Nom} avec @{Arme_Nom}}} {{ Dégats=[[@{Arme_Degats} + @{BonusDegatsForce}]] }}">
+                            Dégats </button>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+        <br />
+        <div class="sheet-armure">
+            <h2>Armures & Protections</h2>
+            <div class="sheet-row">
+                <div class="sheet-col-6">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="sheet-center">Tête</th>
+                                <th class="sheet-center">Bras</th>
+                                <th class="sheet-center">Mains</th>
+                                <th class="sheet-center">Torse</th>
+                                <th class="sheet-center">Jambes</th>
+                                <th class="sheet-center">Pieds</th>
+                                <th class="sheet-center">Bouclier</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="sheet-center"><input type="number" name="attr_PR_Tete" value="0" /></td>
+                                <td class="sheet-center"><input type="number" name="attr_PR_Bras" value="0" /></td>
+                                <td class="sheet-center"><input type="number" name="attr_PR_Mains" value="0" /></td>
+                                <td class="sheet-center"><input type="number" name="attr_PR_Torse" value="0" /></td>
+                                <td class="sheet-center"><input type="number" name="attr_PR_Jambes" value="0" /></td>
+                                <td class="sheet-center"><input type="number" name="attr_PR_Pieds" value="0" /></td>
+                                <td class="sheet-center"><input type="number" name="attr_PR_Bouclier" value="0" /></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="sheet-col-6">
+                    <table class="sheet-center">
+                        <thead>
+                            <tr>
+                                <th>PR Naturelle</th>
+                                <th>PR Physique</th>
+                                <th>PR Magique</th>
+                                <th>PR Totale</th>
+                            </tr>
+                        </thead>
+                        <tr>
+                            <td class="sheet-center"><input type="number" name="attr_PRNat" value="0" /></td>
+                            <td class="sheet-center"><input type="number" name="attr_PRPhy" value="0" /></td>
+                            <td class="sheet-center"><input type="number" name="attr_PRMag" value="0" /></td>
+                            <td class="sheet-center"><input type="number" name="attr_PR" value="0" /></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="sheet-traits">
+            <h2>Traits spéciaux</h2>
+            <div class="sheet-tableth sheet-row">
+                <div class="sheet-col-4">Nom</div>
+                <div class="sheet-col-8">Effet</div>
+            </div>
+            <fieldset class="repeating_traits">
+                <div class="sheet-row">
+                    <div class="sheet-col-4">
+                        <input type="text" class="sheet-noBorder" name="attr_trait_nom" value="" />
+                    </div>
+                    <div class="sheet-col-8">
+                        <input type="text" class="sheet-noBorder" name="attr_trait_effet" value="" />
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+        <br />
+        <div class="sheet-row">
+            <h2>Notes</h2>
+            <div class="sheet-col-12">
+                <textarea name="attr_Personnage_Notes"></textarea>
+            </div>
+        </div>
+        <br />
+        <div class="sheet-row">
+            <h2>Butins</h2>
+            <div class="sheet-col-12">
+                <textarea name="attr_Personnage_Butins"></textarea>
+            </div>
+        </div>
+    </div>
+</div>
