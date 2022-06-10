@@ -1,10 +1,10 @@
 {
-	"html": "Naheulbeuk.html",
-	"css": "Naheulbeuk.css",
+	"html": "bloodlust.html",
+	"css": "bloodlust.css",
 	"authors": "Kaias",
 	"roll20userid": "2983976",
-	"preview": "Naheulbeuk.png",
-	"instructions": "Feuille de personnage pour le Jeu de Role 'Le Donjon de Naheulbeuk' de Pen of Chaos.\n\n* Compatible avec le [Compendium](https://bit.ly/ddn20), pour importer les Competences, Sorts, Coups speciaux, PNJ...\n\n* Support et guide disponibles sur [Naheulbeuk-Online](https://www.naheulbeuk-online.org/)",
+	"preview": "bloodlust.png",
+	"instructions": "Feuille de personnage pour le Jeu de Role Compatible avec le [Compendium](https://bit.ly/ddn20), pour importer les Competences, Sorts, Coups speciaux, PNJ...\n\n*",
 	"useroptions": [
 		{
 			"attribute": "nightMode",
