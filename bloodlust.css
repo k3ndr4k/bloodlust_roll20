@@ -1,89 +1,72 @@
- input[type=checkbox] {
+input[type=checkbox] {
     transform: scale(0.9);
     margin: 1px;
     cursor: pointer;
-    filter: hue-rotate(150deg);
-  }
+    filter: hue-rotate(140deg);
+}
+
 input[type="text"][disabled] {
     color: white;
     background: #333232;
     -webkit-text-fill-color: white
- }
+}
+
 input[type="number"][disabled] {
     color: white;
     background: #575656;
     -webkit-text-fill-color: white
- }
+}
+
+
 /* Prevent cursor being `text` between checkboxes */
-body { cursor: default }
-
-/* pseudo select */
-.sheet-pseudo-select-test{
-    display:grid;
-    grid-template-columns:[selection-start]auto[selection-end] 1fr;
-    grid-template-rows:repeat(5,1fr) [selection-start]auto[selection-end];
-    /*background-color: yellow;
-    grid-gap:5px;*/
-}
-.sheet-pseudo-select{
-    display:grid;
-    grid-template-columns:1fr;
-    grid-area:selection;
-    min-height:15px;
-    outline:1px solid black;
-}
-.sheet-pseudo-select label{
-    position:relative;
-    width:110px;
-    display:none;
-} 
-.sheet-pseudo-select:hover label,
-.sheet-pseudo-select .sheet-select-filter[value*="acrobatics"] ~ .sheet-acrobatics,
-.sheet-pseudo-select .sheet-select-filter[value*="aspects_score_1"] ~ .sheet-aspects_score_1,
-.sheet-pseudo-select .sheet-select-filter[value*="aspects_score_2"] ~ .sheet-aspects_score_2,
-.sheet-pseudo-select .sheet-select-filter[value*="aspects_score_3"] ~ .sheet-aspects_score_3,
-.sheet-pseudo-select .sheet-select-filter[value*="aspects_score_4"] ~ .sheet-aspects_score_4,
-.sheet-pseudo-select .sheet-select-filter[value*="aspects_score_5"] ~ .sheet-aspects_score_5,
-.sheet-pseudo-select .sheet-select-filter[value*="aspects_score_6"] ~ .sheet-aspects_score_6,
-.sheet-pseudo-select .sheet-select-filter[value*="aspects_score_7"] ~ .sheet-aspects_score_7,
-.sheet-pseudo-select .sheet-select-filter[value*="aspects_score_8"] ~ .sheet-aspects_score_8,
-.sheet-pseudo-select .sheet-select-filter[value*="aspects_score_9"] ~ .sheet-aspects_score_9,
-.sheet-pseudo-select .sheet-select-filter[value*="aspects_score_10"] ~ .sheet-aspects_score_10
-{
-    display:initial;
-}
-.sheet-pseudo-select label input[type=radio]{
-    z-index:2;
-    opacity:0;
-    position:absolute;
-}
-.sheet-pseudo-select label *{
-    width:100%;
-    height:100%;
-    display:block;
-}
-.sheet-pseudo-select input[type=text]{
-    z-index:-1;
-    background:none;
-    box-shadow:none;
-    border:0px solid transparent;
-}
-.sheet-pseudo-select label input[type=radio]:checked + input,
-.sheet-pseudo-select label input[type=radio]:checked + span{
-    background-color:grey!important;
-    color: white!important;
+body {
+    cursor: default;
 }
 
+.charsheet button[type="roll"].sheet-d6 {
+    background-image: url("https://github.com/k3ndr4k/bloodlust_roll20/raw/main/Bloodie.png");
+    background-size: 26px 26px;
+    background-repeat: no-repeat;
+    width: 26px;
+    height: 26px;
+    border-style: none;
+    background-color: transparent;
+    margin-left: 5px;
+}
 
-/* fin pseudo select*/
+.charsheet button[type="roll"].sheet-d6:before {
+    content: ' ';
+}
 
+.charsheet button[type="roll"].sheet-d6:hover {
+    background-position: 0;
+}
 
+.charsheet button[type="roll"].sheet-chat {
+    background-image: url("https://raw.githubusercontent.com/k3ndr4k/bloodlust_roll20/main/bloodie_chat.png");
+    background-size: 26px 26px;
+    background-repeat: no-repeat;
+    width: 26px;
+    height: 26px;
+    border-style: none;
+    background-color: transparent;
+    margin-left: 5px;
+}
+
+.charsheet button[type="roll"].sheet-chat:before {
+    content: ' ';
+}
+
+.charsheet button[type="roll"].sheet-chat:hover {
+    background-position: 0;
+}
 
 .sheet-wrapper input[type="number"],
 .sheet-wrapper input[type="text"] {
     vertical-align: middle;
     width: 100%;
 }
+
 .sheet-wrapper input[type="number"] {
     text-align: center;
 }
@@ -147,15 +130,84 @@ h4 {
     color: #ff002b;
 }
 
+
 textarea {
-    width: 98%;
-    height: 50px;
+    padding: 0px;
+    text-align: justify;
+    border-radius: 0px;
+    margin: 0px;
 }
 
-textarea.sheet-code {
-    height: 20px;
-    background-color: #CCC;
+div.sheet-autoex>span {
+    visibility: hidden;
+    display: block;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    white-space: pre-wrap;
+    text-align: inherit;
+    min-height: inherit;
+
+    height: 100%;
+    word-wrap: anywhere;
+    padding-left: 2px;
+    padding-right: 2px;
 }
+
+div.sheet-autoex>textarea {
+    display: block;
+    z-index: 1;
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    height: 100%;
+    overflow: hidden;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    white-space: pre-wrap;
+    text-align: inherit;
+    min-height: inherit;
+    margin: 0px;
+    padding-left: 2px;
+    padding-right: 0px;
+}
+
+div.sheet-autoex>textarea::placeholder {
+    font-family: "Contrail One";
+    color: #575957da;
+    text-transform: capitalize;
+    font-style: italic;
+    font-size: 95%;
+    font-weight: normal;
+
+}
+
+div.sheet-autoex22 {
+    min-height: 22px;
+}
+
+div.sheet-autoex24 {
+    min-height: 24px;
+}
+
+div.sheet-autoex26 {
+    min-height: 26px;
+}
+
+div.sheet-autoex28 {
+    min-height: 28px;
+}
+
+div.sheet-autoex40 {
+    min-height: 40px;
+}
+
+div.sheet-autoex100 {
+    min-height: 100px;
+}
+
 
 table {
     table-layout: fixed;
@@ -380,6 +432,7 @@ input.sheet-display:not(:checked)+h2.sheet-display:after {
 
 input.sheet-display-arme_munition:checked~div.sheet-display-arme_munition,
 input.sheet-display-guns:checked~div.sheet-display-guns,
+input.sheet-display-circonstance:checked~div.sheet-display-circonstance,
 input.sheet-display-munitions:checked~div.sheet-display-munitions,
 input.sheet-display-bagues:checked~div.sheet-display-bagues,
 input.sheet-display-reparation:checked~div.sheet-display-reparation,
@@ -1170,9 +1223,9 @@ span.sheet-float-right {
 }
 
 .sheet-rolltemplate-default td.sheet-td-noFirst {
-    text-align: left!important;
-    font-weight: normal!important;
-    white-space: normal!important;
+    text-align: left !important;
+    font-weight: normal !important;
+    white-space: normal !important;
 }
 
 
@@ -1253,12 +1306,24 @@ input.sheet-nightMode:checked+.sheet-wrapper .sheet-competences div.sheet-noRoll
     clear: both;
 }
 
+.sheet-col-0-5 {
+    width: 3.25%;
+}
+
 .sheet-col-1 {
     width: 7.33%;
 }
 
+.sheet-col-1-5 {
+    width: 11.165%;
+}
+
 .sheet-col-2 {
     width: 15.66%;
+}
+
+.sheet-col-2-5 {
+    width: 20%;
 }
 
 .sheet-col-3 {
