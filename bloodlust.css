@@ -24,7 +24,7 @@ body {
 }
 
 .charsheet button[type="roll"].sheet-d6 {
-    background-image: url("https://github.com/k3ndr4k/bloodlust_roll20/raw/main/Bloodie.png");
+    background-image: url("https://raw.githubusercontent.com/k3ndr4k/bloodlust_roll20/main/resources/Bloodie.png");
     background-size: 26px 26px;
     background-repeat: no-repeat;
     width: 26px;
@@ -43,7 +43,7 @@ body {
 }
 
 .charsheet button[type="roll"].sheet-chat {
-    background-image: url("https://raw.githubusercontent.com/k3ndr4k/bloodlust_roll20/main/bloodie_chat.png");
+    background-image: url("https://raw.githubusercontent.com/k3ndr4k/bloodlust_roll20/main/resources/bloodie_chat.png");
     background-size: 26px 26px;
     background-repeat: no-repeat;
     width: 26px;
