@@ -40,6 +40,6 @@ OK - somme total monnaie avec tableau search "Ceste"
 
 OK - bug exp condition pouvoirs
 
-- changement images inventaire 
+OK - changement images inventaire 
 
-- changement Epices
+OK - changement Epices
